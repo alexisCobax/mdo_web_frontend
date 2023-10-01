@@ -1,0 +1,20 @@
+[
+    {"nombre": "Accesorios", "id": 7, "tipo":"grupo"},
+    {"nombre": "Armazones de Diseñadores Famosos", "id": 16, "tipo":"grupo"},
+    {"nombre": "Brimstone Eyewear", "id": 19, "tipo":"grupo"},
+    {"nombre": "Dolabany Eyewear Liquidacion", "id": 1, "tipo":"grupo"},
+    {"nombre": "Freedom Colors Eyewear", "id": 21, "tipo":"grupo"},
+    {"nombre": "Gafas de Sol", "id": 1, "tipo":"pro"},
+    {"nombre": "Gafas de Sol de Diseñadores Famosos", "id": 17, "tipo":"grupo"},
+    {"nombre": "Mario Galbatti Liquidacion", "id": 2, "tipo":"grupo"},
+    {"nombre": "Plume Paris Liquidacion", "id": 3, "tipo":"grupo"},
+    {"nombre": "Pregraduados para Lectura", "id": 6, "tipo":"grupo"},
+    {"nombre": "Proteccion Deportiva", "id": 3, "tipo":"grupo"},
+    {"nombre": "Seguridad Industrial", "id": 14, "tipo":"grupo"},
+    {"nombre": "Snowberry Eyewear", "id": 20, "tipo":"grupo"},
+    {"nombre": "VENTAS DEL DIA", "id": 60, "tipo":"cat"},
+    {"nombre": "Verona Love Armazones", "id": 22, "tipo":"grupo"},
+    {"nombre": "Verona Love Espejuelos para Computadora", "id": 18, "tipo":"grupo"},
+    {"nombre": "Verona Love niños", "id": 24, "tipo":"grupo"},
+    {"nombre": "Verona Love Solar Polarizado", "id": 23, "tipo":"grupo"}
+  ]
