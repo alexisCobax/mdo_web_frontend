@@ -23,7 +23,7 @@ $precioPromocionProducto = $producto['data']['message'][0]['precioPromocional'];
 $imagenProducto = $imagenUrl.$producto['data']['message'][0]['imagenPrincipal'];
 $descripcionProducto = $producto['data']['message'][0]['descripcion'];
 $stock= $producto['data']['message'][0]['stock'];
-$url = $URLDominio."productos/".$idProducto."/".$nombreProducto."";
+$urlDom = $URLDominio."productos/".$idProducto."/".$nombreProducto."";
 $marca = $producto['data']['message'][0]['nombreMarca'];
 $estuche = $producto['data']['message'][0]['estuche'];
 $codigo = $producto['data']['message'][0]['codigo'];
@@ -45,7 +45,7 @@ $nombreTamaño = $producto['data']['message'][0]['tamano'];
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta property="og:title" content="<?=$marca.'-'.$nombreProducto;?>" />
   <meta property="og:type" content="" />
-  <meta property="og:url" content="<?=$url;?>" />
+  <meta property="og:url" content="<?=$urlDom;?>" />
   <meta property="og:image" content="<?= $imagenProducto;?>" />
   <meta name="theme-color" content="#ae2a69" />
   <!-- Favicon -->

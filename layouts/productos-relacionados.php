@@ -21,8 +21,9 @@ use app\helpers\ApiHelper;
           "producto"=>9
         ];
         $producto = $api->post($url.'/api/producto/related',$payload);
+
         foreach($producto as $p){
-?>
+?>  
                     <div class="col-lg-3 col-md-4 col-12 col-sm-6">
                       <div class="product-cart-wrap small hover-up">
                         <div class="product-img-action-wrap">
