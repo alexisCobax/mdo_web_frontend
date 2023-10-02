@@ -13,7 +13,7 @@ $resultadosPorPagina = 16;
 $paginaActual = 1;
 if(isset($_GET['cantidad'])){ $resultadosPorPagina= $_REQUEST['cantidad'];};
 if(isset($_GET['pagina'])){ $paginaActual= $_REQUEST['pagina'];};
-if(isset($_GET['marca'])){ $paginaActual= $_REQUEST['marca'];};
+if(isset($_GET['marca'])){ $marca = $_REQUEST['marca'];};
 
 $api = new ApiHelper;
 $producto = $api->get($url.'/api/web/producto?cantidad='.$resultadosPorPagina.'&pagina='.$paginaActual.'&marca='.$marca);
