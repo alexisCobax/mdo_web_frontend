@@ -30,7 +30,7 @@
             <?php if($usuarioLogueado) { ?>
               <a href="intranet.php">Mi cuenta</a>
               <a href="cotizaciones.php">Cotizaciones</a>
-              <a href="invoices.php">Compras</a>
+              <a href="invoices.php">Invoices</a>
               <a href="#" onclick="logout();">Cerrar sesión</a>
             <?php  } else{ ?>
               <a href="login.php">Iniciar sesión</a>
