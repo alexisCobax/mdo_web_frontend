@@ -6,10 +6,19 @@ documentReady(() => {
 
 
 function obtenerProductosPaginados(pagina, filtro) {
+
+    var urlActual = window.location.href;
+    var urlData = urlActual.split("=");
+    var marca = '';
+
+if (urlData.length === 2) {
+    marca = urlData[1]; 
+}
+
     pagina = pagina ? pagina : 1;
 
     var token = localStorage.getItem('token');
-    const url = `${api}/web/producto?pagina=${pagina}&cantidad=12` + filtro;
+    const url = `${api}/web/producto?pagina=${pagina}&marca=`+marca + filtro;
 
 
     const requestOptions = {
