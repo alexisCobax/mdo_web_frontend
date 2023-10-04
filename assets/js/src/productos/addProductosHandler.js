@@ -1,6 +1,7 @@
 function agregarProducto(producto) {
 
   const url = api + "/web/carritodetalle";
+
   var cantidadProducto = 0;
 
     cantidadProducto = $('#Cantidad').val();
@@ -39,8 +40,8 @@ function agregarProducto(producto) {
       return response.json();
     })
     .then(result => {
-      if(!result.stockStatus){
-      noStock(result.stockMaximo);;
+      if(!result.status){
+      noStock(result.stock);
       obtenerCarrito();
       }else{
       obtenerCarrito();
@@ -63,7 +64,7 @@ function success() {
 function noStock(stock) {
   Swal.fire({
     title: "",
-    text: "Usted ya alcanzo el maximo de stock disponible para este producto, cantidad disponible:"+stock,
+    text: "Usted ya alcanzo el maximo de stock para este producto, cantidad disponible: "+stock,
     icon: "warning",
     confirmButtonText: "Continuar",
     confirmButtonColor: "#ba417c"

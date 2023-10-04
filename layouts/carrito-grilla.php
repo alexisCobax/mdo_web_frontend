@@ -23,6 +23,7 @@ foreach ($producto['data']['detalles'] as $p) { ?>
         </p>
       </td>
       <td class="price" data-title="Price" style="text-align:right"><span id="precio">U$S<?= number_format($p['producto']['precio'], 2, ',', '.'); ?> </span></td>
+      <td class="cupon" data-title="Cupon" style="text-align:right"><span id="cupon">00001</span></td>
       <td class="" data-title="Stock" >
         <input type="number" class="form-control detail-qty border radius" min="1" max="100" step="1" value="<?= $p['cantidad']; ?>" onchange="actualizarProducto(this)" id="cantidad"   />
       </td>
