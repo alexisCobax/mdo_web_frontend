@@ -1,3 +1,16 @@
+<?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
+use app\helpers\ApiHelper;
+
+$api = new ApiHelper;
+$categoriasProductos = $api->get($url . '/api/web/marcaproducto?cantidad=5');
+$categoriasProductos = $categoriasProductos['data']["original"]["results"];
+
+?>
+
 <div class="header-bottom header-bottom-bg-color sticky-bar">
   <div class="container">
     <div class="header-wrap header-space-between position-relative">
@@ -9,13 +22,11 @@
           <a class="categori-button-active" href="#" >
             <span class="fi-rs-apps"></span> Nuestras Marcas
           </a>
-          <div id="categori-dropdown-wrap" class="categori-dropdown-wrap categori-dropdown-active-large">
+          <div id="" class="categori-dropdown-wrap categori-dropdown-active-large">
               <ul>
-                <li><a href="tienda.php?marca=24"><i class="evara-font-diamond"></i>Brimstone Eyewear</a></li>
-                <li><a href="tienda.php?marca=22"><i class="evara-font-diamond"></i>Verona Love </a></li>
-                <li><a href="tienda.php?marca=18"><i class="evara-font-diamond"></i>Mario Galbatti</a></li>
-                <li><a href="tienda.php?marca=18"><i class="evara-font-diamond"></i>Dolabany Eyewear</a></li>
-                <li><a href="tienda.php?marca=21"><i class="evara-font-diamond"></i>Freedom Colors Eyewear</a></li>
+                <?php foreach($categoriasProductos as $c){ ?>
+                  <li><a href="tienda.php?idMarca=<?= $c['id']; ?>"><i class="evara-font-diamond"></i><?= $c['nombre']; ?></a></li>
+                  <?php } ?>
                 <li><a href="marcas.php">Ver mas +</a></li>
               </ul>
           </div>

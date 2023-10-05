@@ -1,7 +1,7 @@
 [
-    {"nombre": "Accesorios", "id": 261, "tipo":"grupo"},
+    {"nombre": "Accesorios", "id": 7, "tipo":"grupo"},
     {"nombre": "Armazones de Diseñadores Famosos", "id": 16, "tipo":"grupo"},
-    {"nombre": "Brimstone Eyewear", "id": 576, "tipo":"grupo"},
+    {"nombre": "Brimstone Eyewear", "id": 19, "tipo":"grupo"},
     {"nombre": "Dolabany Eyewear Liquidacion", "id": 1, "tipo":"grupo"},
     {"nombre": "Freedom Colors Eyewear", "id": 21, "tipo":"grupo"},
     {"nombre": "Gafas de Sol", "id": 1, "tipo":"pro"},

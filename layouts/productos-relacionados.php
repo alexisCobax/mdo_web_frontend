@@ -28,7 +28,7 @@ use app\helpers\ApiHelper;
                       <div class="product-cart-wrap small hover-up">
                         <div class="product-img-action-wrap">
                           <div class="product-img product-img-zoom">
-                            <a href="shop-product-right.php" tabindex="0">
+                            <a href="producto.php?id=<?= $p['id'] ;?>" tabindex="0">
                               <img class="default-img" src="<?= $URLimagen.$p['imagenPrincipal'].".jpg" ;?>" alt="" />
                               <img class="hover-img" src="<?= $URLimagen.$p['imagenPrincipal'].".jpg" ;?>" alt="" />
                             </a>
@@ -42,11 +42,11 @@ use app\helpers\ApiHelper;
                         </div>
                         <div class="product-content-wrap">
                           <h2>
-                            <a href="shop-product-right.php" tabindex="0"><?= $p['nombre'] ;?></a>
+                            <a href="producto.php?id=<?= $p['id'] ;?>" tabindex="0"><?= $p['nombre'] ;?></a>
                           </h2>
                           <div class="subtitle">
                             <span>
-                              <a href="productos.php\<?= $p['id'] ;?>">Ver mas</a>
+                              <a href="producto.php?id=<?= $p['id'] ;?>">Ver mas</a>
                             </span>
                           </div>
                           <?php if($usuarioLogueado){ ?>

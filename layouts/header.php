@@ -4,7 +4,17 @@
   
   $nombreCliente = json_decode($_COOKIE['cliente'])->nombre;
 
-}?> 
+}
+
+require_once dirname(__DIR__).'/helpers/ApiHelper.php'; 
+
+use app\helpers\ApiHelper;
+
+$api = new ApiHelper;
+$categoriasProductos = $api->get($url . '/api/web/marcaproducto');
+$categoriasProductos = $categoriasProductos['data']["original"]["results"];
+
+?> 
 <div class="header-middle header-middle-ptb-1 d-none d-lg-block background-secondary-color2">
   <div class="container">
     <div class="header-wrap">
@@ -16,7 +26,9 @@
           <form action="#">
             <select class="select-active">
               <option>Todas</option>
-              <?php include __DIR__ . '/comboCategorias.php'; ?>
+              <?php foreach($categoriasProductos as $c){?>
+                <option><?= $c['nombre']; ?></option>
+                <?php }?>
             </select>
             <input type="text" placeholder="Buscar..." />
           </form>
