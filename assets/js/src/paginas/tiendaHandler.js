@@ -18,7 +18,7 @@ if (urlData.length === 2) {
     pagina = pagina ? pagina : 1;
 
     var token = localStorage.getItem('token');
-    const url = `${api}/web/producto?pagina=${pagina}&marca=`+marca + filtro;
+    const url = `${api}/web/producto?pagina=${pagina}&idMarca=`+marca + filtro;
 
 
     const requestOptions = {

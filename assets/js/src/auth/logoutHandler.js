@@ -24,6 +24,10 @@ function logout() {
             localStorage.removeItem('cliente');
             document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/tienda;`;
             document.cookie = `cliente=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/tienda;`;
+
+            document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+            document.cookie = `cliente=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+
 /*             document.cookie.removeItem("token");
             document.cookie.removeItem("cliente") ; */
             location.href = 'login.php';

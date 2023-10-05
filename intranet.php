@@ -4,7 +4,28 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
 //include __DIR__."/clases/abrirConexion.php";
+require_once __DIR__ . '/helpers/ApiHelper.php';
 include __DIR__ . "/clases/funciones.php";
+
+use app\helpers\ApiHelper;
+
+$api = new ApiHelper;
+$cliente = $api->get($url . '/api/web/cliente');
+
+$tipoDeEnvio = $cliente['data']['tipoDeEnvio'];
+$nombrEnvio = $cliente['data']['nombreEnvio'];
+
+$direccionEnvio = $cliente['data']['direccionShape'];
+$regionEnvio = $cliente['data']['regionEnvio'];
+$ciudadEnvio = $cliente['data']['ciudadEnvio'];
+$CPEnvio = $cliente['data']['cpShape'];
+$paisEnvio = $cliente['data']['paisShape'];
+
+
+$telefonoTransportadora = $cliente['data']['telefonoTransportadora'];
+$transportadora = $cliente['data']['transportadora'];
+$comentarios = $cliente['data']['observaciones'];
+
 
 ?>
 <!DOCTYPE html>
@@ -66,57 +87,57 @@ include __DIR__ . "/clases/funciones.php";
             <div class="col">
               <form>
                 <div class="form-group">
-                  <label for="compania">Nombre de la compañia</label>
-                  <input type="text" class="form-control" id="compania">
+                  <label for="compania">Nombre de la compañía</label>
+                  <input type="text" class="form-control" id="compania" value="<?= $cliente['data']['nombre']; ?>">
                 </div>
                 <div class="form-group">
-                  <label for="compania">Dirección</label>
-                  <input type="text" class="form-control" id="compania">
+                  <label for="direccion">Dirección</label>
+                  <input type="text" class="form-control" id="direccion" value="<?= $cliente['data']['direccion']; ?>">
                 </div>
                 <div class="row">
                   <div class="col-4">
                     <div class="form-group">
                       <label for="pais">País</label>
-                      <input type="text" class="form-control" id="pais">
+                      <input type="text" class="form-control" id="pais" value="<?= $cliente['data']['pais']; ?>">
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="form-group">
                       <label for="ciudad">Ciudad</label>
-                      <input type="text" class="form-control" id="ciudad">
+                      <input type="text" class="form-control" id="ciudad" value="<?= $cliente['data']['ciudad']; ?>">
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="form-group">
                       <label for="codigo-postal">Código Postal</label>
-                      <input type="text" class="form-control" id="codigo-postal">
+                      <input type="text" class="form-control" id="codigo-postal" value="<?= $cliente['data']['codigoPostal']; ?>">
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" class="form-control" id="email">
+                  <input type="email" class="form-control" id="email" value="<?= $cliente['data']['email']; ?>">
                 </div>
                 <div class="form-group">
-                  <label for="telefono">telefono</label>
-                  <input type="number" class="form-control" id="telefono">
+                  <label for="telefono">Teléfono</label>
+                  <input type="tel" class="form-control" id="telefono" value="<?= $cliente['data']['telefono']; ?>">
                 </div>
+                <div class="form-group">
+                  <label for="usuario">Usuario</label>
+                  <input type="text" class="form-control" id="usuario" value="" autocomplete="new-password">
+                </div>
+                <div class="form-group">
+                  <label for="password">Contraseña</label>
+                  <input type="password" class="form-control" id="password" value="" autocomplete="new-password">
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-sm ml-2">Guardar</button>
+                </div>
+              </form>
+
             </div>
-            <div class="form-group">
-              <label for="usuario">Usuario</label>
-              <input type="email" class="form-control" id="usuario" aria-describedby="emailHelp" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-              <label for="pass">Contraseña</label>
-              <input type="password" class="form-control" id="pass" placeholder="Password">
-            </div>
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-sm ml-2">Guardar</button>
-            </div>
-            </form>
           </div>
         </div>
-      </div>
       </div>
       </div>
     </section>
@@ -124,7 +145,7 @@ include __DIR__ . "/clases/funciones.php";
   <!-- Pie de pagina -->
   <?php require "./layouts/footer.php"; ?>
   <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-  <script src="assets/js/src/paginas/cotizacionesHandler.js"></script>
+  <script src="assets/js/src/paginas/intranetHandler.js"></script>
 
 
 
