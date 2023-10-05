@@ -76,3 +76,41 @@ function cargarGrillaCotizaciones() {
             serverSide: true //parametros necesarios para poder enviar peticiones al servidor de forma asincronica.
         });
 }
+
+function CotizacionACarrito(cotizacion){
+
+    const url = `${api}/web/cotizacion/carrito`;
+
+    const token = localStorage.getItem('token');
+    
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({"cotizacion":cotizacion}),
+    })
+      .then(response => response.text())
+      .then(result => {
+        if(result){
+        success();
+        setTimeout(function () {
+            window.location.href = '/shop-cart.php';
+          }, 2000);
+        }
+      })
+      .catch(error => console.log('error', error));
+    
+
+}
+
+function success() {
+    Swal.fire({
+      title: "",
+      text: "El carrito fue generado con exito!",
+      icon: "success",
+      confirmButtonText: "Continuar",
+      confirmButtonColor: "#ba417c"
+    });
+  }
