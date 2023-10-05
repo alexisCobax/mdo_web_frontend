@@ -8,7 +8,7 @@ use app\helpers\ApiHelper;
 
 
 $api = new ApiHelper;
-$cliente = $api->get(.$url.'/api/web/cliente');
+$cliente = $api->get($url.'/api/web/cliente');
 
 $nombre = $cliente['data']['nombre'];
 $direccion = $cliente['data']['direccion']; 
