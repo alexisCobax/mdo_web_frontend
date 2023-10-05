@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-include __DIR__."/clases/abrirConexion.php";
+//include __DIR__."/clases/abrirConexion.php";
 include __DIR__."/clases/funciones.php";
 
 ?>

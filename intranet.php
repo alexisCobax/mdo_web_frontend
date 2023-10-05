@@ -66,20 +66,57 @@ include __DIR__ . "/clases/funciones.php";
             <div class="col">
               <form>
                 <div class="form-group">
-                  <label for="usuario">Usuario</label>
-                  <input type="email" class="form-control" id="usuario" aria-describedby="emailHelp" placeholder="Enter email">
+                  <label for="compania">Nombre de la compañia</label>
+                  <input type="text" class="form-control" id="compania">
                 </div>
                 <div class="form-group">
-                  <label for="pass">Contraseña</label>
-                  <input type="password" class="form-control" id="pass" placeholder="Password">
+                  <label for="compania">Dirección</label>
+                  <input type="text" class="form-control" id="compania">
                 </div>
-                <button type="submit" class="btn btn-primary">Guardar</button>
-              </form>
+                <div class="row">
+                  <div class="col-4">
+                    <div class="form-group">
+                      <label for="pais">País</label>
+                      <input type="text" class="form-control" id="pais">
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="form-group">
+                      <label for="ciudad">Ciudad</label>
+                      <input type="text" class="form-control" id="ciudad">
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="form-group">
+                      <label for="codigo-postal">Código Postal</label>
+                      <input type="text" class="form-control" id="codigo-postal">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                  <label for="telefono">telefono</label>
+                  <input type="number" class="form-control" id="telefono">
+                </div>
             </div>
+            <div class="form-group">
+              <label for="usuario">Usuario</label>
+              <input type="email" class="form-control" id="usuario" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="pass">Contraseña</label>
+              <input type="password" class="form-control" id="pass" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-sm ml-2">Guardar</button>
+            </div>
+            </form>
           </div>
         </div>
-
-
+      </div>
       </div>
       </div>
     </section>
