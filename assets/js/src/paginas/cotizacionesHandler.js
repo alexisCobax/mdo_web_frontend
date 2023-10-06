@@ -52,7 +52,7 @@ function cargarGrillaCotizaciones() {
 
             columns: [
                 { "data": "id" , title: "Numero"},
-                { "data": "fecha", title: "Fecha" },
+                { "data": "formatted_fecha", title: "Fecha" },
                 { "data": "total" , title: "Total"},
                 {
                     title: "",
