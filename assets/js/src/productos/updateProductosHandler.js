@@ -2,16 +2,12 @@ function actualizarProducto(cantidad) {
 
   detalle = cantidad.closest('tr');
 
-
   producto = detalle.querySelector("#idProducto").value;
   cantidadProducto = cantidad.value;
   const url = api + "/web/carritodetalle/" + producto;
 
-  //var carrito = localStorage.getItem('carrito');
   var token = localStorage.getItem('token');
-
   var raw = JSON.stringify({
-    //"carrito": carrito,
     "producto": producto,
     "cantidad": cantidadProducto
   });
@@ -42,6 +38,7 @@ function actualizarProducto(cantidad) {
     .then(result => {
 
       if (!result.stockStatus) {
+        cantidad.value = result.stockMaximo; 
         noStock(result.stockMaximo);
         obtenerCarrito();
       } else {
@@ -70,7 +67,4 @@ function noStock(stock) {
     confirmButtonText: "Continuar",
     confirmButtonColor: "#ba417c"
   });
-
-  var inputCantidad = document.getElementById("cantidad");
-  inputCantidad.value = stock;
 }
