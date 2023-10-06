@@ -11,15 +11,19 @@ function obtenerProductosPaginados(pagina, filtro) {
     var urlData = urlActual.split("=");
     var marca = '';
 
-if (urlData.length === 2) {
-    marca = urlData[1]; 
-}
+    if (urlData.length === 2) {
+        marca = urlData[1];
+    }
 
     pagina = pagina ? pagina : 1;
 
     var token = localStorage.getItem('token');
-    const url = `${api}/web/producto?pagina=${pagina}&idMarca=`+marca + filtro;
 
+    if(filtro){
+    var url = `${api}/web/producto?pagina=${pagina}` + filtro;
+    }else{
+    var url = `${api}/web/producto?pagina=${pagina}&idmarca=` + marca + filtro; 
+    }
 
     const requestOptions = {
         method: "GET",
@@ -50,24 +54,28 @@ if (urlData.length === 2) {
 }
 
 function generarFiltro() {
-    glbFiltro="";
-    if(document.getElementById('modelo').value!=''){glbFiltro = glbFiltro + '&nombre=' + document.getElementById('modelo').value;}
-    if(document.getElementById('marca').value!=''){glbFiltro = glbFiltro + '&marca=' + document.getElementById('marca').value;}
+    glbFiltro = "";
+    if (document.getElementById('modelo').value != '') { glbFiltro = glbFiltro + '&nombre=' + document.getElementById('modelo').value; }
+    if (document.getElementById('marca').value != '') { glbFiltro = glbFiltro + '&marca=' + document.getElementById('marca').value; }
     //if(document.getElementById('categoria').value!=''){glbFiltro = glbFiltro + '&categoria=' + document.getElementById('categoria').value;}
-    if(document.getElementById('color').value!=''&&document.getElementById('color').value!='0'){glbFiltro = glbFiltro + '&color=' + document.getElementById('color').value;}
-    if(document.getElementById('amount-from').value!=''){glbFiltro = glbFiltro + '&precioDesde=' + document.getElementById('amount-from').value;}
-    if(document.getElementById('amount-to').value!=''){glbFiltro = glbFiltro + '&precioHasta=' + document.getElementById('amount-to').value;}
+    if (document.getElementById('color').value != '' && document.getElementById('color').value != '0') { glbFiltro = glbFiltro + '&color=' + document.getElementById('color').value; }
+    if (document.getElementById('amount-from').value != '') { glbFiltro = glbFiltro + '&precioDesde=' + document.getElementById('amount-from').value; }
+    if (document.getElementById('amount-to').value != '') { glbFiltro = glbFiltro + '&precioHasta=' + document.getElementById('amount-to').value; }
     obtenerProductosPaginados(1, glbFiltro);
 }
 
 function renderBodyHtml(productos, token) {
-    let html = '';
 
-    $("#product-list").empty();
+    if (productos.length !== 0) {
 
-    productos.forEach((producto) => {
+        let html = '';
 
-        html += `<div class="col-4">
+        $("#product-list").empty();
+
+
+        productos.forEach((producto) => {
+
+            html += `<div class="col-4">
             <div class="product-card card">
                 <div class="product-img-action-wrap card-img-top">
                     <div class="product-img product-img-zoom">
@@ -85,11 +93,11 @@ function renderBodyHtml(productos, token) {
                         <a href="producto.php?id=${producto.id}">${producto.nombreMarca}</a>
                     </div>
                     ${token ?
-                `<div class="product-price mt-1">
+                    `<div class="product-price mt-1">
                             <span class="fs-5">U$S ${producto.precio} </span>
                             ${producto.precioPromocional ? `<span class="old-price" style="text-decoration: line-through">U$S ${producto.precioLista}</span>` : ''}
                         </div>`
-                : ''}
+                    : ''}
                     <div class="mt-2 product-cart">
                         <a aria-label="Buy now" class="action-btn" href="#" onclick="agregarProducto(${producto.id},${producto.precioPromocional})">
                             <i class="fi-rs-shopping-bag-add btn btn-primary"></i>
@@ -100,19 +108,20 @@ function renderBodyHtml(productos, token) {
                 </div>
             </div>
         </div>`;
-    });
+        });
 
 
-html += `
+        html += `
 
 <div class="pagination-area mt-15 mb-sm-5 mb-lg-0" id="pagination-area">
     
-</div>`;    
+</div>`;
 
 
 
 
-    $("#product-list").append(html);
+        $("#product-list").append(html);
+    }
 }
 
 function renderPaginationHtml(response) {
@@ -183,7 +192,7 @@ function renderPaginationHtml(response) {
 $(document).on('click', '.page-link', function (e) {
     e.preventDefault();
     const nuevaPagina = parseInt($(this).text());
-    obtenerProductosPaginados(nuevaPagina,glbFiltro);
+    obtenerProductosPaginados(nuevaPagina, glbFiltro);
     $('html, body').animate({ scrollTop: 0 }, 'slow');
 });
 

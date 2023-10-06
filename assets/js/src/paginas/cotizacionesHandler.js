@@ -82,7 +82,7 @@ function CotizacionACarrito(cotizacion){
     const url = `${api}/web/cotizacion/carrito`;
 
     const token = localStorage.getItem('token');
-    
+
     fetch(url, {
       method: 'POST',
       headers: {
@@ -93,6 +93,7 @@ function CotizacionACarrito(cotizacion){
     })
       .then(response => response.text())
       .then(result => {
+
         if(result){
         success();
         setTimeout(function () {
@@ -101,8 +102,6 @@ function CotizacionACarrito(cotizacion){
         }
       })
       .catch(error => console.log('error', error));
-    
-
 }
 
 function success() {

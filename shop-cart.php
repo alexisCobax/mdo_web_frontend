@@ -1,7 +1,7 @@
 ﻿<?php
 
 error_reporting(E_ALL);
-ini_set('display_errors', '1');
+ini_set('display_errors', 0);
 
 // include __DIR__."/clases/abrirConexion.php";
 include __DIR__."/clases/funciones.php";
@@ -60,7 +60,6 @@ include __DIR__."/clases/funciones.php";
                     <th scope="col">Imagen</th>
                     <th scope="col">Nombre</th>
                     <th scope="col" style="text-align:right">Precio</th>
-                    <th scope="col" style="text-align:right">Cupon</th>
                     <th scope="col" style="text-align:left">Cantidad</th>
                     <th scope="col" style="text-align:right">Subtotal</th>
                     <th scope="col">Borrar</th>
@@ -110,10 +109,6 @@ include __DIR__."/clases/funciones.php";
                     <div class="table-responsive">
                       <table class="table">
                         <tbody>
-                        <tr>
-                            <td class="cart_total_label">Cupón</td>
-                            <td class="cart_total_amount"><span class="font-lg fw-900 text-brand" id="subtotalCarrito">U$S 0.00</span></td>
-                          </tr>
                           <tr>
                             <td class="cart_total_label">Subtotal</td>
                             <td class="cart_total_amount"><span class="font-lg fw-900 text-brand" id="subtotalCarrito">U$S 0.00</span></td>
