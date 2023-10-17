@@ -9,12 +9,13 @@ class ApiHelper
 
         $ch = curl_init($url);
 
-        $headers = [
-            'Authorization: Bearer ' . $_COOKIE['token'],
-        ];
-
+        if (isset($_COOKIE['token'])){
+            $headers = ['Authorization: Bearer ' . $_COOKIE['token'] ];
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        } 
+    
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
         $response = curl_exec($ch);
 
         if (!$response) {

@@ -1,9 +1,9 @@
 <?php
 $URLDominio = "https://mayoristasdeopticas.net/";
-$URLimagen = "https://mayoristasdeopticas.net/productos/";
+$URLimagen = "https://phpstack-1091339-3819555.cloudwaysapps.com/storage/app/public/images/";
 $usuarioLogueado = isset($_COOKIE['token'])&&$_COOKIE['token']!="";
-//$url = 'http://phpstack-1091339-3819555.cloudwaysapps.com';
-$url = 'http://172.20.0.3:8080';
+$url = 'http://phpstack-1091339-3819555.cloudwaysapps.com';
+//$url = 'http://172.20.0.3:8080';
 
 function statusLogin($url, $data, $bearer) {
 

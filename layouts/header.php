@@ -1,12 +1,10 @@
 <?php 
   $nombreCliente = "";
-  if($usuarioLogueado) { 
-  
-  $nombreCliente = json_decode($_COOKIE['cliente'])->nombre;
+  if(isset($usuarioLogueado)&&$usuarioLogueado&&isset($_COOKIE['cliente'])) {   
+      $nombreCliente = json_decode($_COOKIE['cliente'])->nombre;
+  }
 
-}
-
-require_once dirname(__DIR__).'/helpers/ApiHelper.php'; 
+require_once __DIR__.'/../helpers/ApiHelper.php'; 
 
 use app\helpers\ApiHelper;
 

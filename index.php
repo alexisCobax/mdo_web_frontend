@@ -8,7 +8,6 @@ ini_set('display_errors', 0);
 include __DIR__."/clases/funciones.php";
 
 ?>
-
 <!DOCTYPE html>
 <html class="no-js" lang="es">
 
@@ -27,11 +26,11 @@ include __DIR__."/clases/funciones.php";
   <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/opticam/favicon.svg" />
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/main.css?v=3.4" />
-  <link rel="stylesheet" href="./assets/css/custom.css" />
+  <link rel="stylesheet" href="assets/css/custom.css" />
   <!-- Iconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Login -->
-  <link rel="stylesheet" href="./assets/css/loginIcon.css" />
+  <link rel="stylesheet" href="assets/css/loginIcon.css" />
 </head>
 
 <body>
@@ -39,14 +38,14 @@ include __DIR__."/clases/funciones.php";
   <header class="header-area header-style-4 header-height-2">
 
     <!-- Cabecera Top -->
-    <?php require "./layouts/header.php"; ?>
+    <?php include __DIR__."/layouts/header.php"; ?>
 
     <!-- Menu -->
-    <?php require "./layouts/menu.php"; ?>
+    <?php include __DIR__."/layouts/menu.php"; ?>
 
   </header>
   <!-- Menu de celular -->
-  <?php require "./layouts/menu-celular.php"; ?>
+  <?php include __DIR__."/layouts/menu-celular.php"; ?>
 
   <!-- Inicio contenido de la web -->
   <main class="main">
@@ -693,18 +692,18 @@ include __DIR__."/clases/funciones.php";
       <div class="carousel-container">
         <div class="carousel-wrapper">
           <div class="carousel-slide">
-            <img src="./assets/imgs/brands/Captura_de_pantalla__2_-removebg-preview.png" alt="Brand 1" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
-            <img src="./assets/imgs/brands/Dolabany_Eyewear_Logo_White-1.svg" alt="Brand 2" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
-            <img src="./assets/imgs/brands/transparent-brimstone.png" alt="Brand 1" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
-            <img src="./assets/imgs/brands/transparent-freedom.png" alt="Brand 2" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
-            <img src="./assets/imgs/brands/transparent-snowberry.png" alt="Brand 2" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
+            <img src="assets/imgs/brands/Captura_de_pantalla__2_-removebg-preview.png" alt="Brand 1" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
+            <img src="assets/imgs/brands/Dolabany_Eyewear_Logo_White-1.svg" alt="Brand 2" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
+            <img src="assets/imgs/brands/transparent-brimstone.png" alt="Brand 1" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
+            <img src="assets/imgs/brands/transparent-freedom.png" alt="Brand 2" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
+            <img src="assets/imgs/brands/transparent-snowberry.png" alt="Brand 2" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
           </div>
         </div>
       </div>
     </section>
   </main>
   <!-- Pie de pagina -->
-  <?php require "./layouts/footer.php"; ?>
+  <?php include __DIR__."/layouts/footer.php"; ?>
 </body>
 
 </html>

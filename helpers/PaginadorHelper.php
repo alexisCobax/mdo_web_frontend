@@ -4,12 +4,16 @@ namespace app\helpers;
 
 class PaginadorHelper {
     private $results;
+    private $totalRegistros;
     private $resultadosPorPagina;
 
     public function __construct($json, $resultadosPorPagina) {
         $data = json_decode($json, true);
+        //print_r($data);
         $this->results = $data['data']['original']['results'];
+        $this->totalRegistros = $data['data']['original']['total'];
         $this->resultadosPorPagina = $resultadosPorPagina;
+        //echo $this->totalRegistros ;
     }
 
     public function getPaginatedResults($paginaActual) {
@@ -23,6 +27,7 @@ class PaginadorHelper {
     }
 
     public function getTotalPages() {
-        return ceil(count($this->results) / $this->resultadosPorPagina);
+       //echo "totalRegistros: ".$this->totalRegistros."<BR>";
+        return ceil($this->totalRegistros / $this->resultadosPorPagina) ;
     }
 }

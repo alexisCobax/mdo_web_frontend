@@ -68,7 +68,7 @@ $categorias = json_decode($json_data, true);
 
         <div class="col-lg-9">
             <div id="product-list" class="product-list mb-50 row g-3">
-          <?php require "./layouts/tienda-grilla.php"; ?>
+              <?php include __DIR__. "/layouts/tienda-grilla.php"; ?>
             </div></div>
           <div class="col-lg-3 primary-sidebar sticky-sidebar">
             <div class="widget-category mb-30">
@@ -174,7 +174,7 @@ $categorias = json_decode($json_data, true);
   </main>
 
   <!-- Pie de pagina -->
-  <?php require "./layouts/footer.php"; ?>
+  <?php include __DIR__."/layouts/footer.php"; ?>
   <script src="assets/js/src/paginas/tiendaHandler.js"></script>
 </body>
 

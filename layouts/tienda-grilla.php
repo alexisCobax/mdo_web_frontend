@@ -1,6 +1,6 @@
 <?php
 
-require dirname(__DIR__) . '/helpers/PaginadorHelper.php';
+include __DIR__ . '/../helpers/PaginadorHelper.php';
 
 use app\helpers\ApiHelper;
 
@@ -9,6 +9,7 @@ use app\helpers\PaginadorHelper;
 
 $resultadosPorPagina = 16;
 $paginaActual = 1;
+$idMarca ="";
 if (isset($_GET['cantidad'])) {
     $resultadosPorPagina = $_REQUEST['cantidad'];
 };
@@ -22,13 +23,14 @@ if (isset($_GET['idMarca'])) {
 $api = new ApiHelper;
 $producto = $api->get($url . '/api/web/producto?cantidad=' . $resultadosPorPagina . '&pagina=' . $paginaActual . '&idmarca=' . $idMarca);
 
-
+//print_r($producto);
 $producto = json_encode($producto);
 
 
 $paginaActual = isset($_GET['pagina']) ? intval($_GET['pagina']) : 1;
 
 $paginator = new PaginadorHelper($producto, $resultadosPorPagina);
+//echo "REGISTROS:".$paginator->getTotalPages();
 $paginatedResults = $paginator->getPaginatedResults($paginaActual);
 
 if ($paginatedResults) {
@@ -51,7 +53,7 @@ if ($paginatedResults) {
                         <div class="product-category">
                             <a href="producto.php?id=<?= $resultado['id']; ?>"><?= $resultado['nombreMarca']; ?></a>
                         </div>
-                        <?= $_COOKIE['token']
+                        <?= isset($_COOKIE['token'])
                             ? '<div class="product-price mt-1">
                                 <span class="fs-5">U$S ' . $resultado['precio'] . '</span>' .
                             ($resultado['precioPromocional']
@@ -71,7 +73,9 @@ if ($paginatedResults) {
         </div>
     <?php
     }
-    $totalPaginas = $paginator->getTotalPages(); ?>
+    $totalPaginas = $paginator->getTotalPages();
+    
+    ?>
 
     <div class="pagination-area mt-15 mb-sm-5 mb-lg-0" id="pagination-area">
         <nav aria-label="Page navigation example">
