@@ -1,7 +1,7 @@
-﻿﻿<?php
+﻿<?php
 
 error_reporting(E_ALL);
-ini_set('display_errors', '1');
+ini_set('display_errors', '0');
 
 //include __DIR__."/clases/abrirConexion.php";
 require_once __DIR__ . '/helpers/ApiHelper.php';
@@ -76,7 +76,7 @@ $comentarios = $cliente['data']['observaciones'];
       <div class="container">
         <div class="breadcrumb">
           <a href="index.php" rel="nofollow">Inicio</a>
-          <span></span> Intranet
+          <span></span> Registrarse
         </div>
       </div>
     </div>
@@ -126,10 +126,14 @@ $comentarios = $cliente['data']['observaciones'];
                   <label for="usuario">Usuario</label>
                   <input type="text" class="form-control" id="usuario" value="" autocomplete="new-password">
                 </div>
-                <!-- <div class="form-group">
+                <div class="form-group">
                   <label for="password">Contraseña</label>
                   <input type="password" class="form-control" id="password" value="" autocomplete="new-password">
-                </div> -->
+                </div>
+                <div class="form-group">
+                  <label for="password">Repetir Contraseña</label>
+                  <input type="password" class="form-control" id="password" value="" autocomplete="new-password">
+                </div>
                 <div class="form-group">
                   <button type="submit" class="btn btn-primary btn-sm ml-2">Guardar</button>
                 </div>

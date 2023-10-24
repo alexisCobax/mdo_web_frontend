@@ -70,12 +70,13 @@ function renderBodyHtml(productos, token) {
 
         let html = '';
 
-        $("#product-list").empty();
+$("#product-list").empty();
 
+productos.forEach((producto) => {
+    // Verifica si producto.precioLista es igual a producto.precio
+    const hideOldPrice = producto.precioLista === producto.precio;
 
-        productos.forEach((producto) => {
-
-            html += `
+    html += `
         <div class="col-12 h-100">
             <div class="product-card card h-100">
                 <div class="row h-100 g-0">
@@ -93,90 +94,110 @@ function renderBodyHtml(productos, token) {
                     <div class="col-md-8">
                         <div class="card-body position-relative h-100 d-flex flex-column justify-content-between">
                             <div>
-                            <div class="col-md-9">
-                                <h4 class="mt-1">
-                                    <a href="producto.php?id=${producto.id}">${decodeURIComponent(escape(producto.nombre))}.</a> 
-                                </h4>
-                                <div class="product-category">
-                                    <a href="producto.php?id=${producto.id}">${decodeURIComponent(escape(producto.nombreMarca))}</a>
-                                </div>
+                                <div class="col-md-9">
+                                    <h4 class="mt-1">
+                                        <a href="producto.php?id=${producto.id}">${decodeURIComponent(escape(producto.nombre))}.</a>
+                                    </h4>
+                                    <div class="product-category">
+                                        <a href="producto.php?id=${producto.id}">${decodeURIComponent(escape(producto.nombreMarca))}</a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col">
-                            ${token ?
-                    `<div class="mt-2 product-cart">
-                                <div class="product-price mt-1">
-                                    <span class="fs-5">$ ${producto.precioLista} </span>
-                                    <span class="old-price"  style="text-decoration: line-through">${producto.precio}</span>
-                                </div>
-                                <div class="number">
-                                <span class="minus" onclick="Descontar(this);"><em>-</em></span>
-                                <input size="2" type="text" autocomplete="off" class="cart_quantity_input" value="0" name="cantidad">
-                                <span class="plus" onclick="Aumentar(this);"><em>+</em></span>
-                                </div>
-                                <button class="btn btn-sm btn-default" onclick="agregarProducto(${producto.id},${producto.precioPromocional})"><em>+</em> Agregar al carro</button>
-                                </div>
-                            </div>`
-                    :
-                    `<div class="mt-2 product-cart">
-                            <button class="btn btn-sm btn-default" onclick="agregarProducto(${producto.id},${producto.precioPromocional})"><em>+</em> Agregar al carro</button>
+                                ${token ?
+        `<div class="mt-2 product-cart">
+            <div class="product-price mt-1">
+                <span class="fs-5">$ ${producto.precio} </span>
+                ${!hideOldPrice ? `<span class="old-price" style="text-decoration: line-through">${producto.precioLista}</span>` : ''}
+            </div>
+            <div class="number">
+                <span class="minus" onclick="Descontar(this);"><em>-</em></span>
+                <input size="2" type="text" autocomplete="off" class="cart_quantity_input" value="0" name="cantidad">
+                <span class="plus" onclick="Aumentar(this);"><em>+</em></span>
+            </div>
+            <button class="btn btn-sm btn-default" onclick="agregarProducto(${producto.id},${producto.precioPromocional})"><em>+</em> Agregar al carro</button>
+        </div>`
+        :
+        `<div class="mt-2 product-cart">
+            <button class="btn btn-sm btn-default" onclick="agregarProducto(${producto.id},${producto.precioPromocional})"><em>+</em> Agregar al carro</button>
+        </div>
+    </div>`
+    }
+                            </div>
+                        </div>
                     </div>
-                    </div>`
-                }
                 </div>
             </div>
-            </div>
         </div>
-    </div>
+    </div>`;
+});
+
+html += `<div class="pagination-area mt-15 mb-sm-5 mb-lg-0" id="pagination-area"></div>`;
+$("#product-list").append(html);
 
 
-        `;
-            //     html += `<div class="col-4">
-            //     <div class="product-card card">
-            //         <div class="product-img-action-wrap card-img-top">
-            //             <div class="product-img product-img-zoom">
-            //                 <div class="product-img-inner">
-            //                     <a href="producto.php?id=${producto.id}">
-            //                         <img class="hover-img px-4" src="${img + producto.imagenPrincipal}" alt="" />
-            //                     </a>
-            //                 </div>
-            //             </div>
-            //             <div class="card-body position-relative">
-            //             <h4 class="mt-1">
-            //                 <a href="producto.php?id=${producto.id}">${producto.nombre}.</a>
-            //             </h4>
-            //             <div class="product-category">
-            //                 <a href="producto.php?id=${producto.id}">${producto.nombreMarca}</a>
-            //             </div>
-            //             ${token ?
-            //             `<div class="product-price mt-1">
-            //                     <span class="fs-5">U$S ${producto.precio} </span>
-            //                     ${producto.precioPromocional ? `<span class="old-price" style="text-decoration: line-through">U$S ${producto.precioLista}</span>` : ''}
-            //                 </div>`
-            //             : ''}
-            //             <div class="mt-2 product-cart">
-            //                 <a aria-label="Buy now" class="action-btn" href="#" onclick="agregarProducto(${producto.id},${producto.precioPromocional})">
-            //                     <i class="fi-rs-shopping-bag-add btn btn-primary"></i>
-            //                 </a>
-            //             </div>
-            //         </div>
+    //     let html = '';
 
-            //         </div>
-            //     </div>
-            // </div>`;
-        });
+    //     $("#product-list").empty();
 
+    //     productos.forEach((producto) => {
 
-        html += `
-
-<div class="pagination-area mt-15 mb-sm-5 mb-lg-0" id="pagination-area">
-    
-</div>`;
-
-
-
-
-        $("#product-list").append(html);
+    //         html += `
+    //     <div class="col-12 h-100">
+    //         <div class="product-card card h-100">
+    //             <div class="row h-100 g-0">
+    //                 <div class="col-md-4">
+    //                     <div class="product-img-action-wrap card-img h-100">
+    //                         <div class="product-img product-img-zoom h-100">
+    //                             <div class="product-img-inner h-100">
+    //                                 <a href="producto.php?id=${producto.id}">
+    //                                     <img class="hover-img px-4 w-100 h-100 object-fit-cover productPic" src="${img + producto.imagenPrincipal}" alt="" />
+    //                                 </a>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //                 <div class="col-md-8">
+    //                     <div class="card-body position-relative h-100 d-flex flex-column justify-content-between">
+    //                         <div>
+    //                         <div class="col-md-9">
+    //                             <h4 class="mt-1">
+    //                                 <a href="producto.php?id=${producto.id}">${decodeURIComponent(escape(producto.nombre))}.</a> 
+    //                             </h4>
+    //                             <div class="product-category">
+    //                                 <a href="producto.php?id=${producto.id}">${decodeURIComponent(escape(producto.nombreMarca))}</a>
+    //                             </div>
+    //                             </div>
+    //                         </div>
+    //                         <div class="col">
+    //                         ${token ?
+    //                 `<div class="mt-2 product-cart">
+    //                             <div class="product-price mt-1">
+    //                                 <span class="fs-5">$ ${producto.precioLista} </span>
+    //                                 <span class="old-price"  style="text-decoration: line-through">${producto.precio}</span>
+    //                             </div>
+    //                             <div class="number">
+    //                             <span class="minus" onclick="Descontar(this);"><em>-</em></span>
+    //                             <input size="2" type="text" autocomplete="off" class="cart_quantity_input" value="0" name="cantidad">
+    //                             <span class="plus" onclick="Aumentar(this);"><em>+</em></span>
+    //                             </div>
+    //                             <button class="btn btn-sm btn-default" onclick="agregarProducto(${producto.id},${producto.precioPromocional})"><em>+</em> Agregar al carro</button>
+    //                             </div>
+    //                         </div>`
+    //                 :
+    //                 `<div class="mt-2 product-cart">
+    //                         <button class="btn btn-sm btn-default" onclick="agregarProducto(${producto.id},${producto.precioPromocional})"><em>+</em> Agregar al carro</button>
+    //                 </div>
+    //                 </div>`
+    //             }
+    //             </div>
+    //         </div>
+    //         </div>
+    //     </div>
+    // </div>`;
+    // });
+    //     html += `<div class="pagination-area mt-15 mb-sm-5 mb-lg-0" id="pagination-area"></div>`;
+    //     $("#product-list").append(html);
     }
 }
 

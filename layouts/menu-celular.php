@@ -1,3 +1,12 @@
+<?php
+
+use app\helpers\ApiHelper;
+
+$api = new ApiHelper;
+$categoriasProductos = $api->get($url . '/api/web/vistamarca');
+
+?>
+
 <div class="mobile-header-active mobile-header-wrapper-style">
       <div class="mobile-header-wrapper-inner">
         <div class="mobile-header-top">
@@ -30,7 +39,28 @@
               <div
                 class="categori-dropdown-wrap categori-dropdown-active-small"
               id="categori-dropdown-wrap">
-                <li>
+
+              <?php
+
+// Dividir el array en columnas de 8 elementos cada una
+$columnas = array_chunk($categoriasProductos['data'], 15);
+
+// Iterar a través de las columnas
+foreach ($columnas as $columna) {
+
+  foreach ($columna as $dato) {
+    echo '<li class="">
+<a href="tienda.php?marca=' . $dato['id'] . '" style="
+              width: 100%;
+              overflow-wrap: break-word;
+              font-size: 15px;
+            ">' . $dato['NombreMarca'] . ' (' . $dato['CantidadProductos'] . ')</a>
+</li>';
+  }
+}
+?>
+
+                <!-- <li>
                   <a href="shop-list-left.php"
                     ><i class="evara-font-desktop"></i>Accesorios</a
                   >
@@ -90,7 +120,7 @@
                   <a href="shop-list-left.php"
                     ><i class="evara-font-home"></i>Proteccion Deportiva</a
                   >
-                </li>
+                </li> -->
               </div>
             </div>
             <!-- mobile menu start -->
@@ -112,8 +142,8 @@
                   ><a href="index.php">Contacto</a>
                 </li>
                 <li class="menu-item-has-children">
-                  <span class="menu-expand"></span><a href="#">Tienda</a>
-                  <ul class="dropdown">
+                  <span class="menu-expand"></span><a href="tienda.php">Tienda</a>
+                  <!-- <ul class="dropdown">
                     <li class="menu-item-has-children">
                       <span class="menu-expand"></span
                       ><a href="#"
@@ -182,7 +212,7 @@
                         </li>
                       </ul>
                     </li>
-                  </ul>
+                  </ul> -->
                 </li>
               </ul>
             </nav>

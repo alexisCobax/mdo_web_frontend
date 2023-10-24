@@ -47,6 +47,7 @@ $categoriasProductos = $categoriasProductos['data']["original"]["results"];
               <a href="#" onclick="logout();">Cerrar sesión</a>
             <?php  } else{ ?>
               <a href="login.php">Iniciar sesión</a>
+              <a href="registro.php">Registrarse</a>
             <?php }?>
             
             
