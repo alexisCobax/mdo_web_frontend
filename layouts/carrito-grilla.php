@@ -6,7 +6,7 @@ if(isset($producto['data'])){
 
 foreach ($producto['data']['detalles'] as $p) { ?>
     <tr>
-      <td class="image product-thumbnail"><img src="https://mayoristasdeopticas.net/productos/<?= $p['producto']['imagen']; ?>.jpg" alt="#"></td>
+      <td class="image product-thumbnail"><img src="<?= $URLimagen.$p['producto']['imagen']; ?>.jpg" alt="#"></td>
       <td class="product-des product-name">
         <h5 class="product-name"><a href="producto.php?id=<?= $p['producto']['id']; ?>"><?= $p['producto']['nombre']; ?></a></h5>
         <p class="font-xs"><?= $p['producto']['marcaNombre']; ?> <br /><?= $p['producto']['tamano']; ?> | <?= $p['producto']['color']; ?>

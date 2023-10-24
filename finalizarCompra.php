@@ -2,7 +2,7 @@
 <?php
 
 require_once __DIR__.'/helpers/ApiHelper.php'; 
-include __DIR__."/clases/funciones.php";
+require_once __DIR__."/clases/funciones.php";
 
 use app\helpers\ApiHelper;
 

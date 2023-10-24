@@ -5,7 +5,7 @@ ini_set('display_errors', 0);
 
 
 // include __DIR__."/clases/abrirConexion.php";
-include __DIR__."/clases/funciones.php";
+require_once __DIR__."/clases/funciones.php";
 
 ?>
 <!DOCTYPE html>
@@ -22,6 +22,7 @@ include __DIR__."/clases/funciones.php";
   <meta property="og:url" content="" />
   <meta property="og:image" content="" />
   <meta name="theme-color" content="#ae2a69" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/opticam/favicon.svg" />
   <!-- Template CSS -->

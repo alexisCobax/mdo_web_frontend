@@ -23,10 +23,7 @@ class ApiHelper
         }
         curl_close($ch);
         $data = json_decode($response, true);
-/*         echo $url."<BR>";
-        print_r( $data);
-        echo "<BR>"; */
-        //echo $url; $data;
+
         if (!$data) {
             return json_encode(['error' => 'Error al decodificar la respuesta JSON']);
         }

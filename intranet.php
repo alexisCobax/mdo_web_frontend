@@ -1,39 +1,19 @@
-﻿<?php
-
+﻿﻿<?php
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
-//include __DIR__."/clases/abrirConexion.php";
-require_once __DIR__ . '/helpers/ApiHelper.php';
 include __DIR__ . "/clases/funciones.php";
-
-use app\helpers\ApiHelper;
-
-$api = new ApiHelper;
-$cliente = $api->get($url . '/api/web/cliente');
-
-$tipoDeEnvio = $cliente['data']['tipoDeEnvio'];
-$nombrEnvio = $cliente['data']['nombreEnvio'];
-
-$direccionEnvio = $cliente['data']['direccionShape'];
-$regionEnvio = $cliente['data']['regionEnvio'];
-$ciudadEnvio = $cliente['data']['ciudadEnvio'];
-$CPEnvio = $cliente['data']['cpShape'];
-$paisEnvio = $cliente['data']['paisShape'];
-
-
-$telefonoTransportadora = $cliente['data']['telefonoTransportadora'];
-$transportadora = $cliente['data']['transportadora'];
-$comentarios = $cliente['data']['observaciones'];
-
-
+$json_url = './assets/js/src/categorias/categorias.json';
+$json_data = file_get_contents($json_url);
+$categorias = json_decode($json_data, true);
 ?>
+
 <!DOCTYPE html>
 <html class="no-js" lang="es">
 
 <head>
   <meta charset="utf-8" />
-  <title>Mayorista de opticas - Intranet</title>
+  <title>Mayorista de opticas - Tienda</title>
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="description" content="Venta al por mayor de opticas" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -47,13 +27,70 @@ $comentarios = $cliente['data']['observaciones'];
   <!-- Template CSS -->
   <link rel="stylesheet" href="./assets/css/main.css?v=3.4" />
   <link rel="stylesheet" href="./assets/css/custom.css" />
-  <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
-
 
   <!-- Iconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Login -->
   <link rel="stylesheet" href="./assets/css/loginIcon.css" />
+  <script>
+    var glbFiltro = "";
+
+  </script>
+  <style >
+
+
+   .minus,  .plus {
+        width: 35px;
+        height: 35px;
+        background: #fff;
+        border-radius: 6px;
+        padding: 8px 5px 8px 5px;
+        border: 1px solid #333F48;
+        display: inline-block;
+        text-align: center;
+        color: #333F48;
+        position: relative;
+        cursor: pointer;
+        -webkit-touch-callout: none;
+        /* iOS Safari */
+        -webkit-user-select: none;
+        /* Safari */
+        -khtml-user-select: none;
+        /* Konqueror HTML */
+        -moz-user-select: none;
+        /* Old versions of Firefox */
+        -ms-user-select: none;
+        /* Internet Explorer/Edge */
+        user-select: none;
+        /* Non-prefixed version, currently
+                                      supported by Chrome, Opera and Firefox */
+    }
+input {
+    outline: none;
+}
+
+ .number .minus em,  .number .plus em {
+    position: relative;
+    top: -2px;
+    font-style: normal;
+    font-size: 1.8rem;
+}
+
+ .number input {
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    font-size: 1.4rem;
+    border-radius: 6px;
+    border: 1px solid #333F48;
+    /* border-radius: 4px; */
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -10px;
+    padding-left: 0px;
+}
+  </style>
 </head>
 
 <body>
@@ -76,80 +113,124 @@ $comentarios = $cliente['data']['observaciones'];
       <div class="container">
         <div class="breadcrumb">
           <a href="index.php" rel="nofollow">Inicio</a>
-          <span></span> Intranet
+          <span></span> Tienda
         </div>
       </div>
     </div>
     <section class="mt-50 mb-50">
       <div class="container">
         <div class="row flex-row-reverse">
-          <div class="row mb-3">
-            <div class="col">
-              <form>
-                <div class="form-group">
-                  <label for="compania">Nombre de la compañía</label>
-                  <input type="text" class="form-control" id="compania" value="<?= $cliente['data']['nombre']; ?>">
-                </div>
-                <div class="form-group">
-                  <label for="direccion">Dirección</label>
-                  <input type="text" class="form-control" id="direccion" value="<?= $cliente['data']['direccion']; ?>">
-                </div>
-                <div class="row">
-                  <div class="col-4">
-                    <div class="form-group">
-                      <label for="pais">País</label>
-                      <input type="text" class="form-control" id="pais" value="<?= $cliente['data']['pais']; ?>">
-                    </div>
-                  </div>
-                  <div class="col-4">
-                    <div class="form-group">
-                      <label for="ciudad">Ciudad</label>
-                      <input type="text" class="form-control" id="ciudad" value="<?= $cliente['data']['ciudad']; ?>">
-                    </div>
-                  </div>
-                  <div class="col-4">
-                    <div class="form-group">
-                      <label for="codigo-postal">Código Postal</label>
-                      <input type="text" class="form-control" id="codigo-postal" value="<?= $cliente['data']['codigoPostal']; ?>">
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control" id="email" value="<?= $cliente['data']['email']; ?>">
-                </div>
-                <div class="form-group">
-                  <label for="telefono">Teléfono</label>
-                  <input type="tel" class="form-control" id="telefono" value="<?= $cliente['data']['telefono']; ?>">
-                </div>
-                <div class="form-group">
-                  <label for="password">Contraseña</label>
-                  <input type="password" class="form-control" id="password" value="" autocomplete="new-password">
-                </div>
 
-                <div class="form-group">
-                  <label for="password-repeat">Repetir Contraseña</label>
-                  <input type="password" class="form-control" id="password-repeat" value="" autocomplete="new-password">
-                </div>
-                <div class="form-group">
-                  <button type="submit" class="btn btn-primary btn-sm ml-2">Guardar</button>
-                </div>
-              </form>
+        <div class="col-lg-9">
+            <div id="product-list" class="product-list mb-50 row g-3">
+              <?php include __DIR__. "/layouts/tienda-grilla.php"; ?>
+            </div></div>
+          <div class="col-lg-3 primary-sidebar sticky-sidebar">
+            <div class="widget-category mb-30">
+<!--               <a class="collapsed" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <h5 class="section-title style-1 mb-30 wow fadeIn animated">
+                  Categoria
+                </h5>
+              </a>
+              <div class="collapse" id="collapseExample">
+                <div class="categoriesMain"></div>
+                <ul class="categories">
+                  <?php foreach ($categorias as $c) { ?>
+                    <li>
+                      <a href="producto.php"><?= $c['nombre'] ?></a>
+                    </li>
+                  <?php } ?>
+                  
+                </ul>
+              </div>
+            </div> -->
+            <!-- Fillter By Price -->
+            <div class="sidebar-widget price_range range mb-30">
+              <div class="widget-header position-relative mb-20 pb-10">
+                <h5 class="widget-title mb-10">Modelo</h5>
+                <div class="bt-1 border-color-1"></div>
+              </div>
+              <div class="price-filter mb-20">
+                <div class="price-filter-inner">
+                  <div class="price_slider_amount">
 
+                    <div class="label-input d-flex">
+                      <input type="text" id="modelo" name="modelo" class="border rounded px-3" style="margin-right: 10px" placeholder="" />
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="widget-header position-relative mb-20 pb-10">
+                <h5 class="widget-title mb-10">Marca</h5>
+                <div class="bt-1 border-color-1"></div>
+              </div>
+              <div class="price-filter mb-20">
+                <div class="price-filter-inner">
+                  <div class="price_slider_amount">
+
+                    <div class="label-input d-flex">
+                      <input type="text" id="marca" name="marca" class="border rounded px-3" style="margin-right: 10px" placeholder="" />
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="widget-header position-relative mb-20 pb-10">
+                <h5 class="widget-title mb-10">Color</h5>
+                <div class="bt-1 border-color-1"></div>
+              </div>
+              <div class="price-filter mb-20">
+                <div class="price-filter-inner">
+                  <div class="price_slider_amount">
+
+                    <div class="label-input d-flex">
+                      <select id="color" name="color">
+                        <option value="0">Todos</option>
+                        <option value="1">Negro</option>
+                        <option value="2">Rojo</option>
+                        <option value="7">Rosa</option>
+                        <option value="8">Amarillo</option>
+                        <option value="9">Dorado</option>
+                        <option value="10">Plateado</option>
+                        <option value="3">Azul</option>
+                        <option value="4">Verde</option>
+                        <option value="5">Varios</option>
+                        <option value="6">Marron</option>
+                      </select>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="widget-header position-relative mb-20 pb-10">
+                <h5 class="widget-title mb-10">Filtrar por precio</h5>
+                <div class="bt-1 border-color-1"></div>
+              </div>
+              <div class="price-filter mb-20">
+                <div class="price-filter-inner">
+                  <div class="price_slider_amount">
+                    <span>Rango:</span>
+                    <div class="label-input d-flex">
+                      <input type="number" id="amount-from" name="price-from" class="border rounded px-3" style="margin-right: 10px" placeholder="Desde.." />
+                      <input type="number" id="amount-to" name="price-to" class="border rounded px-3" style="margin-left: 10px" placeholder="Hasta.." />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-sm btn-default" onClick="generarFiltro();"><i class="fi-rs-filter mr-5"></i> Filtrar</a>
             </div>
           </div>
         </div>
       </div>
-      </div>
     </section>
   </main>
+
   <!-- Pie de pagina -->
-  <?php require "./layouts/footer.php"; ?>
-  <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-  <script src="assets/js/src/paginas/intranetHandler.js"></script>
-
-
-
+  <?php include __DIR__."/layouts/footer.php"; ?>
+  <script src="assets/js/src/paginas/tiendaHandler.js"></script>
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 ﻿<?php
 
 require_once __DIR__.'/helpers/ApiHelper.php'; 
-include __DIR__."/clases/funciones.php";
+require_once __DIR__."/clases/funciones.php";
 
 use app\helpers\ApiHelper;
 
@@ -12,15 +12,13 @@ if($idProducto==0){
   header("Location: index.php");
 }
 
-$imagenUrl = 'https://mayoristasdeopticas.net/productos/';
-
 $api = new ApiHelper;
 $producto = $api->get($url.'/api/web/producto/'.$idProducto);
 
 $nombreProducto = $producto['data']['message'][0]['nombre'];
 $precioProducto = $producto['data']['message'][0]['precio']; 
 $precioPromocionProducto = $producto['data']['message'][0]['precioPromocional'];
-$imagenProducto = $imagenUrl.$producto['data']['message'][0]['imagenPrincipal'];
+$imagenProducto = $URLimagen.$producto['data']['message'][0]['imagenPrincipal'];
 $descripcionProducto = $producto['data']['message'][0]['descripcion'];
 $stock= $producto['data']['message'][0]['stock'];
 $urlDom = $URLDominio."productos/".$idProducto."/".$nombreProducto."";
@@ -95,9 +93,7 @@ $nombreTamaño = $producto['data']['message'][0]['tamano'];
                     <!-- MAIN SLIDES -->
                     <div id="main-slides">
                         <div class="product-image-slider">
-                            
                               <img id="img-slide" src="<?=$imagenProducto;?>" alt="<?=$nombreProducto;?>" />
-                            
                         </div>
                     </div>
                   </div>
@@ -155,7 +151,6 @@ $nombreTamaño = $producto['data']['message'][0]['tamano'];
                       <?php }?>
                 </div>
               </div>
-
               <?php include "./layouts/productos-relacionados.php"; ?>
             </div>
           </div>
