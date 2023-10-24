@@ -181,9 +181,10 @@ function renderBodyHtml(productos, token) {
 }
 
 function renderPaginationHtml(response) {
+
     const totalPages = Math.ceil(response.cantidad_total / response.cantidad_por_pagina);
     const currentPage = response.pagina;
-    const maxDisplayedPages = 12;
+    const maxDisplayedPages = 6;
     let html = '';
 
     html += `<nav aria-label="Page navigation example">
