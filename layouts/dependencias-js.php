@@ -54,3 +54,4 @@
 <script src="assets/js/src/carrito/addCarritoHandler.js"></script>
 <script src="assets/js/src/carrito/removeCarritoHandler.js"></script>
 <script src="assets/js/src/carrito/sendToCotizacionHandler.js"></script>
+<script src="assets/js/src/paginas/shopCartHandler.js"></script>

@@ -33,10 +33,8 @@ use app\helpers\ApiHelper;
                 <div class="row product-grid-4">
 <?php 
 $api = new ApiHelper;
-$payload = [
-  "destacado"=>1
-];
-$producto = $api->post($url.'/api/web/producto/',$payload);
+
+$producto = $api->get($url.'api/web/producto?destacado=1');
 foreach($producto as $p){
 
 ?>                    
@@ -90,10 +88,9 @@ foreach($producto as $p){
                 <div class="row product-grid-4">
 <?php        
 $api = new ApiHelper;
-$payload = [
-  "new"=>1
-];
-$producto = $api->post($url.'/api/web/producto/',$payload);
+
+
+$producto = $api->get($url.'api/web/producto?estado=nuevo');
 foreach($producto as $p){                   
 ?>
             <div class="col-lg-4 col-md-4 col-12 col-sm-6">

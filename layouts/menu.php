@@ -6,8 +6,7 @@ ini_set('display_errors', 0);
 use app\helpers\ApiHelper;
 
 $api = new ApiHelper;
-$categoriasProductos = $api->get($url . '/api/web/marcaproducto?cantidad=5');
-$categoriasProductos = $categoriasProductos['data']["original"]["results"];
+$categoriasProductos = $api->get($url . '/api/web/vistamarca');
 
 ?>
 
@@ -19,17 +18,339 @@ $categoriasProductos = $categoriasProductos['data']["original"]["results"];
       </div>
       <div class="header-nav d-none d-lg-flex">
         <div class="main-categori-wrap d-none d-lg-block">
-          <a class="categori-button-active" href="#" >
-            <span class="fi-rs-apps"></span> Nuestras Marcas
+          <a class="categori-button-active" href="#">
+            <span class="fi-rs-apps"></span> Ver marcas
           </a>
-          <div id="" class="categori-dropdown-wrap categori-dropdown-active-large">
+          <!-- nuevo menu -->
+
+          <div class="categori-dropdown-wrap categori-dropdown-active-large d-flex">
+
+            <?php
+
+            // Dividir el array en columnas de 8 elementos cada una
+            $columnas = array_chunk($categoriasProductos['data'], 15);
+
+            // Iterar a través de las columnas
+            foreach ($columnas as $columna) {
+              echo '<ul style="width: 300px">';
+              foreach ($columna as $dato) {
+                echo '<li class="">
+        <a href="tienda.php?marca=' . $dato['id'] . '" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• ' . $dato['NombreMarca'] . ' (' . $dato['CantidadProductos'] . ')</a>
+        </li>';
+              }
+              echo "</ul>";
+            }
+            ?>
+
+            <!-- 
+                  <ul style="width: 300px">
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Accesorios</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Armazones de Diseñadores Famosos</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Brimstone Eyewear</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Armazones de Diseñadores Famosos</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Dolabany Eyewear Liquidacion</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Freedom Colors Eyewear</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Gafas de Sol</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Gafas de Sol de Diseñadores Famosos</a>
+                    </li>
+                  </ul>
+                  <ul style="width: 300px">
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Accesorios</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Armazones de Diseñadores Famosos</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Brimstone Eyewear</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Armazones de Diseñadores Famosos</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Dolabany Eyewear Liquidacion</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Freedom Colors Eyewear</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Gafas de Sol</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Gafas de Sol de Diseñadores Famosos</a>
+                    </li>
+                  </ul>
+                  <ul style="width: 300px">
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Accesorios</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Armazones de Diseñadores Famosos</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Brimstone Eyewear</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Armazones de Diseñadores Famosos</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Dolabany Eyewear Liquidacion</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Freedom Colors Eyewear</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Gafas de Sol</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Gafas de Sol de Diseñadores Famosos</a>
+                    </li>
+                  </ul>
+                  <ul style="width: 300px">
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Accesorios</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Armazones de Diseñadores Famosos</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Brimstone Eyewear</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Armazones de Diseñadores Famosos</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Dolabany Eyewear Liquidacion</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Freedom Colors Eyewear</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Gafas de Sol</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Gafas de Sol de Diseñadores Famosos</a>
+                    </li>
+                  </ul>
+                  <ul style="width: 300px">
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Accesorios</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Armazones de Diseñadores Famosos</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Brimstone Eyewear</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Armazones de Diseñadores Famosos</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Dolabany Eyewear Liquidacion</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Freedom Colors Eyewear</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Gafas de Sol</a>
+                    </li>
+                    <li>
+                      <a href="shop-list-left.html" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• Gafas de Sol de Diseñadores Famosos</a>
+                    </li>
+                  </ul> -->
+
+            <!-- <div class="more_categories">Ver más...</div> -->
+          </div>
+
+          <!-- fin nuevo menu -->
+
+          <!-- <div id="" class="categori-dropdown-wrap categori-dropdown-active-large">
               <ul>
-                <?php foreach($categoriasProductos as $c){ ?>
+                <?php foreach ($categoriasProductos as $c) { ?>
                   <li><a href="tienda.php?idMarca=<?= $c['id']; ?>"><i class="evara-font-diamond"></i><?= $c['nombre']; ?></a></li>
                   <?php } ?>
                 <li><a href="marcas.php">Ver mas +</a></li>
               </ul>
-          </div>
+          </div> -->
         </div>
         <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
           <nav>
@@ -41,7 +362,7 @@ $categoriasProductos = $categoriasProductos['data']["original"]["results"];
                 <a href="nosotros.php">Nosotros</a>
               </li>
               <li class="position-static">
-              <a href="tienda.php">Tienda </a>
+                <a href="tienda.php">Tienda </a>
                 <!-- <a href="#">Tienda <i class="fi-rs-angle-down"></i></a>
                 <ul class="mega-menu">
                   <li class="sub-mega-menu sub-mega-menu-width-22">
@@ -187,4 +508,3 @@ $categoriasProductos = $categoriasProductos['data']["original"]["results"];
     </div>
   </div>
 </div>
-

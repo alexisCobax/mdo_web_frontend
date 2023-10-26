@@ -1,7 +1,7 @@
-﻿<?php
+﻿﻿<?php
 
 error_reporting(E_ALL);
-ini_set('display_errors', 0);
+ini_set('display_errors', '1');
 
 //include __DIR__."/clases/abrirConexion.php";
 require_once __DIR__ . '/helpers/ApiHelper.php';
@@ -123,14 +123,13 @@ $comentarios = $cliente['data']['observaciones'];
                   <input type="tel" class="form-control" id="telefono" value="<?= $cliente['data']['telefono']; ?>">
                 </div>
                 <div class="form-group">
+                  <label for="usuario">Usuario</label>
+                  <input type="text" class="form-control" id="usuario" value="" autocomplete="new-password">
+                </div>
+                <!-- <div class="form-group">
                   <label for="password">Contraseña</label>
                   <input type="password" class="form-control" id="password" value="" autocomplete="new-password">
-                </div>
-
-                <div class="form-group">
-                  <label for="password-repeat">Repetir Contraseña</label>
-                  <input type="password" class="form-control" id="password-repeat" value="" autocomplete="new-password">
-                </div>
+                </div> -->
                 <div class="form-group">
                   <button type="submit" class="btn btn-primary btn-sm ml-2">Guardar</button>
                 </div>

@@ -1,4 +1,4 @@
-﻿<?php
+﻿﻿<?php
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
@@ -36,6 +36,61 @@ $categorias = json_decode($json_data, true);
     var glbFiltro = "";
 
   </script>
+  <style >
+
+
+   .minus,  .plus {
+        width: 35px;
+        height: 35px;
+        background: #fff;
+        border-radius: 6px;
+        padding: 8px 5px 8px 5px;
+        border: 1px solid #333F48;
+        display: inline-block;
+        text-align: center;
+        color: #333F48;
+        position: relative;
+        cursor: pointer;
+        -webkit-touch-callout: none;
+        /* iOS Safari */
+        -webkit-user-select: none;
+        /* Safari */
+        -khtml-user-select: none;
+        /* Konqueror HTML */
+        -moz-user-select: none;
+        /* Old versions of Firefox */
+        -ms-user-select: none;
+        /* Internet Explorer/Edge */
+        user-select: none;
+        /* Non-prefixed version, currently
+                                      supported by Chrome, Opera and Firefox */
+    }
+input {
+    outline: none;
+}
+
+ .number .minus em,  .number .plus em {
+    position: relative;
+    top: -2px;
+    font-style: normal;
+    font-size: 1.8rem;
+}
+
+ .number input {
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    font-size: 1.4rem;
+    border-radius: 6px;
+    border: 1px solid #333F48;
+    /* border-radius: 4px; */
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -10px;
+    padding-left: 0px;
+}
+  </style>
 </head>
 
 <body>

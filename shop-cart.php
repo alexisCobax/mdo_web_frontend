@@ -85,16 +85,14 @@ include __DIR__."/clases/funciones.php";
                     <div class="total-amount">
                       <div class="left">
                         <div class="coupon">
-                          <form action="#" target="_blank">
                             <div class="form-row row justify-content-center">
                               <div class="form-group col-lg-6">
-                                <input class="font-medium" name="Coupon" placeholder="Ingresá tu cupon">
+                                <input class="font-medium" name="Coupon" id="cupon" placeholder="Ingresá tu cupon">
                               </div>
                               <div class="form-group col-lg-6">
-                                <button class="btn  btn-sm"><i class="fi-rs-label mr-10"></i>Aplicar</button>
+                                <button type="button" class="btn  btn-sm" onclick="aplicarDescuento();"><i class="fi-rs-label mr-10"></i>Aplicar</button>
                               </div>
                             </div>
-                          </form>
                         </div>
                       </div>
                     </div>
@@ -124,13 +122,15 @@ include __DIR__."/clases/funciones.php";
                         </tbody>
                       </table>
                     </div>
-                    <Div id="OpcionesTerminarCompra">
+                    <?php if(isset($_COOKIE['token'])){ ?>
+                    <div id="OpcionesTerminarCompra">
                         <a href="#" class="btn" id="btnCotizacion" onclick="GenerarCotizacion();" > <i class="fi-rs-disk mr-10"></i>Guardar Cotizacion</a>
                         <a href="finalizarCompra.php" class="btn" id="btnFinalizarCompra" style="float:right"> <i class="fi-rs-box-alt mr-10"></i>Proceder al pago</a>
-                    </Div>
-                    <div id="MensajeCantidadMinima">
-                        COMPAR MINIMA 30 UNIDADES
                     </div>
+                    <div id="MensajeCantidadMinima">
+                        COMPAR MINIMA 20 UNIDADES
+                    </div>
+                    <?php } ?>
                   </div>
                 </div>
               </div>

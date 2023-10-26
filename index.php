@@ -3,10 +3,19 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
+require_once __DIR__.'/helpers/ApiHelper.php'; 
+require_once __DIR__."/clases/funciones.php";
 
-// include __DIR__."/clases/abrirConexion.php";
-include __DIR__."/clases/funciones.php";
+use app\helpers\ApiHelper;
 
+
+$api = new ApiHelper;
+
+$productosDestacados = $api->get($url.'/api/web/producto?destacado=1');
+$productosDestacados = $productosDestacados["data"]["original"]["results"];
+
+$productosNuevos = $api->get($url.'/api/web/producto?estado=nuevo');
+$productosNuevos = $productosNuevos["data"]["original"]["results"];
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="es">
@@ -125,6 +134,8 @@ include __DIR__."/clases/funciones.php";
         </div>
       </div>
     </section>
+
+     
     <!-- Tabs con los productos -->
     <section class="product-tabs pt-25 pb-20 wow fadeIn animated">
       <div class="container">
@@ -149,322 +160,66 @@ include __DIR__."/clases/funciones.php";
             </div>
             <!--End nav-tabs-->
             <div class="tab-content wow fadeIn animated" id="myTabContent">
+
+
               <!--Tab (Featured)-->
               <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
                 <div class="row product-grid-4">
+                <?php foreach($productosDestacados as $p){ ?>  
                   <div class="col-lg-4 col-md-4 col-12 col-sm-6">
                     <div class="product-cart-wrap mb-30">
                       <div class="product-img-action-wrap">
                         <div class="product-img product-img-zoom">
                           <a href="producto.php">
-                            <img class="default-img" src="assets/imgs/opticam/products/product-2-1.jpg" alt="" />
-                            <img class="hover-img" src="assets/imgs/opticam/products/product-3-1.jpg" alt="" />
+                            <img class="default-img" src="<?= $URLimagen.$p['imagenPrincipal'] ;?>" alt="" />
+                            <img class="hover-img" src="<?= $URLimagen.$p['imagenPrincipal'] ;?>" alt="" />
                           </a>
                         </div>
-                        <!-- <div class="product-action-1">
-                            <a
-                              aria-label="Vista rapida"
-                              class="action-btn hover-up"
-                              data-bs-toggle="modal"
-                              data-bs-target="#quickViewModal"
-                              ><i class="fi-rs-eye"></i
-                            ></a>
-                          </div> -->
                         <div class="product-badges product-badges-position product-badges-mrg">
                           <span class="hot">Destacado</span>
                         </div>
                       </div>
                       <div class="product-content-wrap">
                         <div class="product-category">
-                          <a href="shop-list-left.php">Anteojo</a>
+                          <a href="#"><?php echo $p['categoriaNombre']; ?></a>
                         </div>
                         <h2>
-                          <a href="producto.php">Brimstone</a>
+                          <a href="producto.php?marca=<?php echo $p['marca']; ?>"><?php echo $p['nombreMarca']; ?></a>
                         </h2>
                         <div class="subtitle"></div>
                         <div class="product-price">
-                          <span>$238.85 </span>
-                          <span class="old-price">$245.8</span>
+                        <?php if($p['precioPromocional'] != 0){ $precio=$p['precioPromocional']; ?>
+                                    <span>U$S<?php echo $p['precioPromocional'] ;?> </span>
+                                    <span class="old-price">U$S <?php echo $p['precio'] ;?></span>
+                            <?php }else{ $precio=$p['precio']?>
+                                    <span>U$S <?php echo $p['precio'] ;?></span>
+                            <?php } ?>
                         </div>
                         <div class="product-action-1 show">
-                          <a aria-label="Agregar al carrito" class="action-btn hover-up bg-white" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                          <a aria-label="Agregar al carrito" class="action-btn hover-up bg-white" onclick="agregarProducto(<?= $p['id']; ?>,<?= $precio?>)"><i class="fi-rs-shopping-bag-add"></i></a>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-4 col-md-4 col-12 col-sm-6">
-                    <div class="product-cart-wrap mb-30">
-                      <div class="product-img-action-wrap">
-                        <div class="product-img product-img-zoom">
-                          <a href="producto.php">
-                            <img class="default-img" src="assets/imgs/opticam/products/product-2-2.jpg" alt="" />
-                            <img class="hover-img" src="assets/imgs/opticam/products/product-2-2.jpg" alt="" />
-                          </a>
-                        </div>
-                        <!-- <div class="product-action-1">
-                            <a
-                              aria-label="Vista rapida"
-                              class="action-btn hover-up"
-                              data-bs-toggle="modal"
-                              data-bs-target="#quickViewModal"
-                              ><i class="fi-rs-eye"></i
-                            ></a>
-                          </div> -->
-                        <div class="product-badges product-badges-position product-badges-mrg">
-                          <span class="hot">Destacado</span>
-                        </div>
-                      </div>
-                      <div class="product-content-wrap">
-                        <div class="product-category">
-                          <a href="shop-list-left.php">Anteojos</a>
-                        </div>
-                        <h2>
-                          <a href="producto.php">Snowberrys</a>
-                        </h2>
-                        <div class="subtitle"></div>
-                        <div class="product-price">
-                          <span>$138.85 </span>
-                          <span class="old-price">$255.8</span>
-                        </div>
-                        <div class="product-action-1 show">
-                          <a aria-label="Agregar al carrito" class="action-btn hover-up bg-white" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-md-4 col-12 col-sm-6">
-                    <div class="product-cart-wrap mb-30">
-                      <div class="product-img-action-wrap">
-                        <div class="product-img product-img-zoom">
-                          <a href="producto.php">
-                            <img class="default-img" src="assets/imgs/opticam/products/product-2-3.jpg" alt="" />
-                            <img class="hover-img" src="assets/imgs/opticam/products/product-2-3.jpg" alt="" />
-                          </a>
-                        </div>
-                        <!-- <div class="product-action-1">
-                            <a
-                              aria-label="Vista rapida"
-                              class="action-btn hover-up"
-                              data-bs-toggle="modal"
-                              data-bs-target="#quickViewModal"
-                              ><i class="fi-rs-eye"></i
-                            ></a>
-                          </div> -->
-                        <div class="product-badges product-badges-position product-badges-mrg">
-                          <span class="hot">Destacado</span>
-                        </div>
-                      </div>
-                      <div class="product-content-wrap">
-                        <div class="product-category">
-                          <a href="shop-list-left.php">Anteojos</a>
-                        </div>
-                        <h2>
-                          <a href="producto.php">Verona love</a>
-                        </h2>
-                        <div class="subtitle"></div>
-                        <div class="product-price">
-                          <span>$338.85 </span>
-                          <span class="old-price">$445.8</span>
-                        </div>
-                        <div class="product-action-1 show">
-                          <a aria-label="Agregar al carrito" class="action-btn hover-up bg-white" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <?php } ?>
                 </div>
               </div>
               <!--Tab (Popular)-->
-              <!-- <div
-                  class="tab-pane fade"
-                  id="tab-two"
-                  role="tabpanel"
-                  aria-labelledby="tab-two"
-                >
-                  <div class="row product-grid-4">
-                    <div class="col-lg-4 col-md-4 col-12 col-sm-6">
-                      <div class="product-cart-wrap mb-30">
-                        <div class="product-img-action-wrap">
-                          <div class="product-img product-img-zoom">
-                            <a href="producto.php">
-                              <img
-                                class="default-img"
-                                src="assets/imgs/opticam/products/product-2-4.jpg"
-                                alt=""
-                              />
-                              <img
-                                class="hover-img"
-                                src="assets/imgs/opticam/products/product-2-4.jpg"
-                                alt=""
-                              />
-                            </a>
-                          </div>
-                          <div class="product-action-1">
-                            <a
-                              aria-label="Vista rapida"
-                              class="action-btn hover-up"
-                              data-bs-toggle="modal"
-                              data-bs-target="#quickViewModal"
-                              ><i class="fi-rs-eye"></i
-                            ></a>
-                          </div>
-                          <div
-                            class="product-badges product-badges-position product-badges-mrg"
-                          >
-                            <span class="best">Mas vendido</span>
-                          </div>
-                        </div>
-                        <div class="product-content-wrap">
-                          <div class="product-category">
-                            <a href="shop-list-left.php">Donec </a>
-                          </div>
-                          <h2>
-                            <a href="producto.php"
-                              >Lorem ipsum dolor</a
-                            >
-                          </h2>
-                          <div class="subtitle"></div>
-                          <div class="product-price">
-                            <span>$238.85 </span>
-                            <span class="old-price">$245.8</span>
-                          </div>
-                          <div class="product-action-1 show">
-                            <a
-                              aria-label="Agregar al carrito"
-                              class="action-btn hover-up"
-                              href="shop-cart.php"
-                              ><i class="fi-rs-shopping-bag-add"></i
-                            ></a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-12 col-sm-6">
-                      <div class="product-cart-wrap mb-30">
-                        <div class="product-img-action-wrap">
-                          <div class="product-img product-img-zoom">
-                            <a href="producto.php">
-                              <img
-                                class="default-img"
-                                src="assets/imgs/opticam/products/product-2-5.jpg"
-                                alt=""
-                              />
-                              <img
-                                class="hover-img"
-                                src="assets/imgs/opticam/products/product-2-5.jpg"
-                                alt=""
-                              />
-                            </a>
-                          </div>
-                          <div class="product-action-1">
-                            <a
-                              aria-label="Vista rapida"
-                              class="action-btn hover-up"
-                              data-bs-toggle="modal"
-                              data-bs-target="#quickViewModal"
-                              ><i class="fi-rs-eye"></i
-                            ></a>
-                          </div>
-                          <div
-                            class="product-badges product-badges-position product-badges-mrg"
-                          >
-                            <span class="best">Mas vendido</span>
-                          </div>
-                        </div>
-                        <div class="product-content-wrap">
-                          <div class="product-category">
-                            <a href="shop-list-left.php">Music</a>
-                          </div>
-                          <h2>
-                            <a href="producto.php"
-                              >Sed tincidunt interdum</a
-                            >
-                          </h2>
-                          <div class="subtitle"></div>
-                          <div class="product-price">
-                            <span>$138.85 </span>
-                            <span class="old-price">$255.8</span>
-                          </div>
-                          <div class="product-action-1 show">
-                            <a
-                              aria-label="Agregar al carrito"
-                              class="action-btn hover-up"
-                              href="shop-cart.php"
-                              ><i class="fi-rs-shopping-bag-add"></i
-                            ></a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-12 col-sm-6">
-                      <div class="product-cart-wrap mb-30">
-                        <div class="product-img-action-wrap">
-                          <div class="product-img product-img-zoom">
-                            <a href="producto.php">
-                              <img
-                                class="default-img"
-                                src="assets/imgs/opticam/products/product-2-6.jpg"
-                                alt=""
-                              />
-                              <img
-                                class="hover-img"
-                                src="assets/imgs/opticam/products/product-2-6.jpg"
-                                alt=""
-                              />
-                            </a>
-                          </div>
-                          <div class="product-action-1">
-                            <a
-                              aria-label="Vista rapida"
-                              class="action-btn hover-up"
-                              data-bs-toggle="modal"
-                              data-bs-target="#quickViewModal"
-                              ><i class="fi-rs-eye"></i
-                            ></a>
-                          </div>
-                          <div
-                            class="product-badges product-badges-position product-badges-mrg"
-                          >
-                            <span class="best">Mas vendido</span>
-                          </div>
-                        </div>
-                        <div class="product-content-wrap">
-                          <div class="product-category">
-                            <a href="shop-list-left.php">Watch</a>
-                          </div>
-                          <h2>
-                            <a href="producto.php"
-                              >Fusce metus orci</a
-                            >
-                          </h2>
-                          <div class="subtitle"></div>
-                          <div class="product-price">
-                            <span>$338.85 </span>
-                            <span class="old-price">$445.8</span>
-                          </div>
-                          <div class="product-action-1 show">
-                            <a
-                              aria-label="Agregar al carrito"
-                              class="action-btn hover-up"
-                              href="shop-cart.php"
-                              ><i class="fi-rs-shopping-bag-add"></i
-                            ></a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
+
               <!--Tab (New)-->
               <div class="tab-pane fade" id="tab-three" role="tabpanel" aria-labelledby="tab-three">
                 <div class="row product-grid-4">
+
+
+                <?php foreach($productosNuevos as $pn){ ?>  
+
                   <div class="col-lg-4 col-md-4 col-12 col-sm-6">
                     <div class="product-cart-wrap mb-30">
                       <div class="product-img-action-wrap">
                         <div class="product-img product-img-zoom">
                           <a href="producto.php">
-                            <img class="default-img" src="assets/imgs/opticam/products/product-2-1.jpg" alt="" />
-                            <img class="hover-img" src="assets/imgs/opticam/products/product-2-2.jpg" alt="" />
+                          <img class="default-img" src="<?= $URLimagen.$pn['imagenPrincipal'] ;?>" alt="" />
+                            <img class="hover-img" src="<?= $URLimagen.$pn['imagenPrincipal'] ;?>" alt="" />
                           </a>
                         </div>
                         <div class="product-action-1">
@@ -475,91 +230,29 @@ include __DIR__."/clases/funciones.php";
                         </div>
                       </div>
                       <div class="product-content-wrap">
-                        <div class="product-category">
-                          <a href="shop-list-left.php">Music</a>
+                      <div class="product-category">
+                          <a href="#"><?php echo $pn['categoriaNombre']; ?></a>
                         </div>
                         <h2>
-                          <a href="producto.php">Donec ut nisl rutrum</a>
+                        <a href="producto.php?marca=<?php echo $pn['marca']; ?>"><?php echo $pn['nombreMarca']; ?></a>
                         </h2>
                         <div class="subtitle"></div>
                         <div class="product-price">
-                          <span>$238.85 </span>
-                          <span class="old-price">$245.8</span>
+                        <?php if($pn['precioPromocional'] != 0){ $pnrecio=$pn['precioPromocional']; ?>
+                                    <span>U$S<?php echo $pn['precioPromocional'] ;?> </span>
+                                    <span class="old-price">U$S <?php echo $pn['precio'] ;?></span>
+                            <?php }else{ $pnrecio=$pn['precio']?>
+                                    <span>U$S <?php echo $pn['precio'] ;?></span>
+                            <?php } ?>
                         </div>
                         <div class="product-action-1 show">
-                          <a aria-label="Agregar al carrito" class="action-btn hover-up bg-white" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                          <a aria-label="Agregar al carrito" class="action-btn hover-up bg-white" onclick="agregarProducto(<?= $pn['id']; ?>,<?= $pnrecio?>)"><i class="fi-rs-shopping-bag-add"></i></a>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-4 col-md-4 col-12 col-sm-6">
-                    <div class="product-cart-wrap mb-30">
-                      <div class="product-img-action-wrap">
-                        <div class="product-img product-img-zoom">
-                          <a href="producto.php">
-                            <img class="hover-img" src="assets/imgs/opticam/products/product-2-2.jpg" alt="" />
-                            <img class="default-img" src="assets/imgs/opticam/products/product-2-2.jpg" alt="" />
-                          </a>
-                        </div>
-                        <div class="product-action-1">
-                          <a aria-label="Vista rapida" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                        </div>
-                        <div class="product-badges product-badges-position product-badges-mrg">
-                          <span class="new">Nuevo</span>
-                        </div>
-                      </div>
-                      <div class="product-content-wrap">
-                        <div class="product-category">
-                          <a href="shop-list-left.php">Music</a>
-                        </div>
-                        <h2>
-                          <a href="producto.php">Nullam dapibus pharetra</a>
-                        </h2>
-                        <div class="subtitle"></div>
-                        <div class="product-price">
-                          <span>$138.85 </span>
-                          <span class="old-price">$255.8</span>
-                        </div>
-                        <div class="product-action-1 show">
-                          <a aria-label="Agregar al carrito" class="action-btn hover-up bg-white" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-md-4 col-12 col-sm-6">
-                    <div class="product-cart-wrap mb-30">
-                      <div class="product-img-action-wrap">
-                        <div class="product-img product-img-zoom">
-                          <a href="producto.php">
-                            <img class="hover-img" src="assets/imgs/opticam/products/product-2-3.jpg" alt="" />
-                            <img class="default-img" src="assets/imgs/opticam/products/product-2-3.jpg" alt="" />
-                          </a>
-                        </div>
-                        <div class="product-action-1">
-                          <a aria-label="Vista rapida" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                        </div>
-                        <div class="product-badges product-badges-position product-badges-mrg">
-                          <span class="new">Nuevo</span>
-                        </div>
-                      </div>
-                      <div class="product-content-wrap">
-                        <div class="product-category">
-                          <a href="shop-list-left.php">Music</a>
-                        </div>
-                        <h2>
-                          <a href="producto.php">Nullam dapibus pharetra</a>
-                        </h2>
-                        <div class="subtitle"></div>
-                        <div class="product-price">
-                          <span>$138.85 </span>
-                          <span class="old-price">$255.8</span>
-                        </div>
-                        <div class="product-action-1 show">
-                          <a aria-label="Agregar al carrito" class="action-btn hover-up bg-white" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+
+                  <?php } ?>
                 </div>
               </div>
             </div>

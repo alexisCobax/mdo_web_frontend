@@ -69,7 +69,7 @@ require_once __DIR__."/clases/funciones.php";
 
 <div class="row row-style">
 <div class="col">&nbsp;</div>
-<div class="col text-center"><h1>Gracias por su compra!</h1></div>
+<div class="col text-center"><h1>Gracias por registrarse!</h1></div>
 <div class="col">&nbsp;</div>
 </div>
   </main>

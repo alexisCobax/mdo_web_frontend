@@ -1,4 +1,7 @@
-<?php 
+<?php
+
+require_once __DIR__.'/../clases/funciones.php'; 
+
   $nombreCliente = "";
   if(isset($usuarioLogueado)&&$usuarioLogueado&&isset($_COOKIE['cliente'])) {   
       $nombreCliente = json_decode($_COOKIE['cliente'])->nombre;
@@ -31,11 +34,11 @@ $categoriasProductos = $categoriasProductos['data']["original"]["results"];
             <input type="text" placeholder="Buscar..." />
           </form>
         </div>
-        <div class="lenguage">
+        <!-- <div class="lenguage">
           <a href="../EN"><img src="assets/imgs/theme/flag-us.png" alt="" /></a>
-        </div>
-          <div class="dropdown ">
-          <div id="myDiv" class="dropdown-trigger"><i class="fa-regular fa-user ml-5 fs-4" style="color: #353c44"></i><?= $nombreCliente ?></div>
+        </div> -->
+          <div class="dropdown" style="width: 20%;">
+          <div id="myDiv" class="dropdown-trigger"><i class="fa-regular fa-user ml-5 fs-4" style="color: #353c44"></i>&nbsp;&nbsp;<?= $nombreCliente ?></div>
           <div class="dropdown-content">
             <?php if($usuarioLogueado) { ?>
               <a href="intranet.php">Mi cuenta</a>
@@ -44,6 +47,7 @@ $categoriasProductos = $categoriasProductos['data']["original"]["results"];
               <a href="#" onclick="logout();">Cerrar sesión</a>
             <?php  } else{ ?>
               <a href="login.php">Iniciar sesión</a>
+              <a href="registro.php">Registrarse</a>
             <?php }?>
             
             
