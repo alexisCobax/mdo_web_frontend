@@ -1,15 +1,16 @@
-﻿<?php
+﻿﻿﻿<?php
 
-include __DIR__ . "/clases/funciones.php";
-require_once __DIR__.'/helpers/ApiHelper.php'; 
+  include __DIR__ . "/clases/funciones.php";
+  require_once __DIR__ . '/helpers/ApiHelper.php';
 
-use app\helpers\ApiHelper;
+  use app\helpers\ApiHelper;
 
-$api = new ApiHelper;
-$categorias = $api->get($url . '/api/web/marcaproducto');
-$categorias = $categorias['data']["original"]["results"];
+  $api = new ApiHelper;
+  $categorias = $api->get($url . '/api/web/vistamarca');
+  $categorias = $categorias['data'];
+  //print_r($categorias);
 
-?>
+  ?>
 
 <!DOCTYPE html>
 <html class="no-js" lang="es">
@@ -76,7 +77,7 @@ $categorias = $categorias['data']["original"]["results"];
       <div class="container">
         <div class="breadcrumb">
           <a href="index.php" rel="nofollow">Inicio</a>
-          <span></span> Envio
+          <span></span> Marcas
         </div>
       </div>
     </div>
@@ -85,27 +86,30 @@ $categorias = $categorias['data']["original"]["results"];
         <div class="row flex-row-reverse" style="transform: none;">
 
           <div class="col-lg-12">
-            <div id="product-list" class="product-list mb-50 row g-3">
-
+            <ul style=" columns: 4;list-style-type: none;column-gap: 0;">
+              <!--   <div class="row"> -->
               <!-- Inicio del bucle -->
-              <?php foreach($categorias as $c) { ?>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                  <div class="product-card card">
-                    <div class="card-body text-center square-card">
-                      <div class="centered-text">
-                      <?= $c['nombre']; ?>
-                      </div>
-                    </div>
-                  </div>
-
-
-                </div>
+              <a href="tienda.php?grupo=7">
+                <li style="border:1px solid; padding:3px 3px 3px 20px;border-color: var(--primary-color)">
+                  <?= '<B>Accesorios</B> ()'; ?>
+                </li>
+              </a>
+              <?php foreach ($categorias as $c) { ?>
+                <!-- <div class="col-lg-3 col-md-4 col-xs-12" style="border:1px solid; padding:3px 3px 3px 20px;border-color: var(--primary-color)" > -->
+                <a href="tienda.php?idMarca=<?=$c['id'];?>">
+                <li style="border:1px solid; padding:3px 3px 3px 20px;border-color: var(--primary-color)">
+                  <?= '<B>' . $c['NombreMarca'] . '</B> (' . $c['CantidadProductos'] . ')'; ?>
+                </li>
+                </a>
+                <!-- </div> -->
               <?php } ?>
-              <!-- Fin del bucle -->
-            </div>
+              <!-- </div> -->
+            </ul>
+            <!-- Fin del bucle -->
           </div>
-
         </div>
+
+      </div>
       </div>
     </section>
   </main>

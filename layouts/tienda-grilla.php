@@ -9,7 +9,8 @@ use app\helpers\PaginadorHelper;
 
 $resultadosPorPagina = 16;
 $paginaActual = 1;
-$idMarca ="";
+$idMarca = "";
+$grupo = "";
 if (isset($_GET['cantidad'])) {
     $resultadosPorPagina = $_REQUEST['cantidad'];
 };
@@ -20,8 +21,18 @@ if (isset($_GET['idMarca'])) {
     $idMarca = $_REQUEST['idMarca'];
 };
 
+if (isset($_GET['grupo'])) {
+    $idGrupo = $_REQUEST['grupo'];
+};
+
 $api = new ApiHelper;
-$producto = $api->get($url . '/api/web/producto?cantidad=' . $resultadosPorPagina . '&pagina=' . $paginaActual . '&idmarca=' . $idMarca);
+
+if ($_GET['grupo']) {
+    $producto = $api->get($url . '/api/web/producto?cantidad=' . $resultadosPorPagina . '&pagina=' . $paginaActual . '&grupo=' . $idGrupo);
+} else {
+    $producto = $api->get($url . '/api/web/producto?cantidad=' . $resultadosPorPagina . '&pagina=' . $paginaActual . '&idmarca=' . $idMarca);
+}
+
 
 //print_r($producto);
 $producto = json_encode($producto);
@@ -74,7 +85,7 @@ if ($paginatedResults) {
     <?php
     }
     $totalPaginas = $paginator->getTotalPages();
-    
+
     ?>
 
     <div class="pagination-area mt-15 mb-sm-5 mb-lg-0" id="pagination-area">

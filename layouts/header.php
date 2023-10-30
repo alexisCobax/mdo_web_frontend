@@ -26,7 +26,6 @@ $categoriasProductos = $categoriasProductos['data']["original"]["results"];
         <div class="search-style-2">
           <form action="#">
             <select class="select-active">
-              <option>Todas</option>
               <?php foreach($categoriasProductos as $c){?>
                 <option><?= $c['nombre']; ?></option>
                 <?php }?>

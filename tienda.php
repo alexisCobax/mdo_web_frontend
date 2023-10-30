@@ -127,23 +127,7 @@ input {
             </div></div>
           <div class="col-lg-3 primary-sidebar sticky-sidebar">
             <div class="widget-category mb-30">
-<!--               <a class="collapsed" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                <h5 class="section-title style-1 mb-30 wow fadeIn animated">
-                  Categoria
-                </h5>
-              </a>
-              <div class="collapse" id="collapseExample">
-                <div class="categoriesMain"></div>
-                <ul class="categories">
-                  <?php foreach ($categorias as $c) { ?>
-                    <li>
-                      <a href="producto.php"><?= $c['nombre'] ?></a>
-                    </li>
-                  <?php } ?>
-                  
-                </ul>
-              </div>
-            </div> -->
+
             <!-- Fillter By Price -->
             <div class="sidebar-widget price_range range mb-30">
               <div class="widget-header position-relative mb-20 pb-10">
