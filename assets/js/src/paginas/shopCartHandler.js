@@ -17,14 +17,29 @@ function aplicarDescuento() {
         .then(response => response.json())
         .then(data => {
 
+            if(data.status==200){
+
             Swal.fire({
                 title: "",
                 text: "El cupon ha sido aplicado con exito",
+                icon: "info",
+                confirmButtonText: "ok",
+                confirmButtonColor: "#ba417c"
+            });
+        }
+
+        if(data.status==404){
+
+            Swal.fire({
+                title: "",
+                text: "El cupon ya existe y esta aplicado",
                 icon: "success",
                 confirmButtonText: "ok",
                 confirmButtonColor: "#ba417c"
             });
-            //--
+        }
+
+
         })
         .catch(error => {
             Swal.fire({
