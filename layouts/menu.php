@@ -27,9 +27,58 @@ $categoriasProductos['data'][] = $nuevoElemento;
       </div>
       <div class="header-nav d-none d-lg-flex">
         <div class="main-categori-wrap d-none d-lg-block">
-          <a class="categori-button" href="marcas.php">
+          <a class="categori-button-active" href="marcas.php">
             <span class="fi-rs-apps"></span> Ver marcas
           </a>
+          <!-- nuevo menu -->
+
+          <div class="categori-dropdown-wrap categori-dropdown-active-large d-flex">
+
+            <?php
+
+            // Dividir el array en columnas de 8 elementos cada una
+            $columnas = array_chunk($categoriasProductos['data'], 15);
+
+            // Iterar a través de las columnas
+            foreach ($columnas as $columna) {
+              echo '<ul style="width: 300px">';
+
+              foreach ($columna as $dato) {
+
+                if ($dato['NombreMarca'] == 'Accesorios') {
+                  echo '<li class="">
+                  <a href="tienda.php?grupo=' . $dato['id'] . '" style="
+                                    width: 100%;
+                                    overflow-wrap: break-word;
+                                    font-size: 15px;
+                                  ">• ' . $dato['NombreMarca'] . ' (' . $dato['CantidadProductos'] . ')</a>
+                  </li>';
+                } else {
+                  echo '<li class="">
+                <a href="tienda.php?marca=' . $dato['id'] . '" style="
+                          width: 100%;
+                          overflow-wrap: break-word;
+                          font-size: 15px;
+                        ">• ' . $dato['NombreMarca'] . ' (' . $dato['CantidadProductos'] . ')</a>
+        </li>';
+                }
+              }
+              echo "</ul>";
+            }
+            ?>
+
+          </div>
+
+          <!-- fin nuevo menu -->
+
+          <!-- <div id="" class="categori-dropdown-wrap categori-dropdown-active-large">
+              <ul>
+                <?php foreach ($categoriasProductos as $c) { ?>
+                  <li><a href="tienda.php?idMarca=<?= $c['id']; ?>"><i class="evara-font-diamond"></i><?= $c['nombre']; ?></a></li>
+                  <?php } ?>
+                <li><a href="marcas.php">Ver mas +</a></li>
+              </ul>
+          </div> -->
         </div>
         <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
           <nav>
@@ -40,6 +89,9 @@ $categoriasProductos['data'][] = $nuevoElemento;
               <li>
                 <a href="nosotros.php">Nosotros</a>
               </li>
+              <!-- <li class="position-static">
+                <a href="tienda.php">Tienda </a>
+              </li> -->
               <li>
                 <a href="FAQ.php">FAQ</a>
               </li>
