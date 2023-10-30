@@ -13,7 +13,7 @@ class ApiHelper
             $headers = ['Authorization: Bearer ' . $_COOKIE['token'] ];
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         } 
-    
+
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $response = curl_exec($ch);
