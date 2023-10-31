@@ -11,6 +11,8 @@ $resultadosPorPagina = 16;
 $paginaActual = 1;
 $idMarca = "";
 $grupo = "";
+$buscador = "";
+
 if (isset($_GET['cantidad'])) {
     $resultadosPorPagina = $_REQUEST['cantidad'];
 };
@@ -25,12 +27,16 @@ if (isset($_GET['grupo'])) {
     $idGrupo = $_REQUEST['grupo'];
 };
 
+if (isset($_GET['buscador'])) {
+    $buscador = $_REQUEST['buscador'];
+};
+
 $api = new ApiHelper;
 
 if ($_GET['grupo']) {
-    $producto = $api->get($url . '/api/web/producto?cantidad=' . $resultadosPorPagina . '&pagina=' . $paginaActual . '&grupo=' . $idGrupo);
+    $producto = $api->get($url . '/api/web/producto?cantidad=' . $resultadosPorPagina . '&pagina=' . $paginaActual . '&grupo=' . $idGrupo. '&buscador=' .$buscador);
 } else {
-    $producto = $api->get($url . '/api/web/producto?cantidad=' . $resultadosPorPagina . '&pagina=' . $paginaActual . '&idmarca=' . $idMarca);
+    $producto = $api->get($url . '/api/web/producto?cantidad=' . $resultadosPorPagina . '&pagina=' . $paginaActual . '&idmarca=' . $idMarca. '&buscador=' .$buscador);
 }
 
 

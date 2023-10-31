@@ -91,7 +91,7 @@
               <!-- Inicio del bucle -->
               <a href="tienda.php?grupo=7">
                 <li style="border:1px solid; padding:3px 3px 3px 20px;border-color: var(--primary-color)">
-                  <?= '<B>Accesorios</B> ()'; ?>
+                  <?= '<B>Accesorios</B>'; ?>
                 </li>
               </a>
               <?php foreach ($categorias as $c) { ?>

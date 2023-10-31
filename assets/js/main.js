@@ -465,7 +465,14 @@
     /*---------------------
         Select active
     --------------------- */
-    $('.select-active').select2();
+    $('.select-active').select2({
+        templateSelection: function(data) {
+          if (data.text.length > 10) {
+            return data.text.slice(0, 10) + '...'; // Recorta a 10 caracteres y agrega puntos suspensivos
+          }
+          return data.text;
+        }
+      });
 
     /*--- Checkout toggle function ----*/
     $('.checkout-click1').on('click', function(e) {

@@ -76,9 +76,9 @@ $productosNuevos = $productosNuevos["data"]["original"]["results"];
                         Descuentos en todos los productos
                       </h2>
                       <p class="animated">Ahorra un 10%</p>
-                      <a class="animated btn btn-primary btn-brush-3" style="border-radius: 30px; border-style: none" href="producto.php" tabindex="0">
+                      <!-- <a class="animated btn btn-primary btn-brush-3" style="border-radius: 30px; border-style: none" href="producto.php" tabindex="0">
                         Ver más
-                      </a>
+                      </a> -->
                     </div>
                   </div>
                   <div class="col-lg-7 col-md-6">
@@ -103,7 +103,7 @@ $productosNuevos = $productosNuevos["data"]["original"]["results"];
                         Emprender sea simple para todos
                       </h2>
                       <p class="animated">Consulta hoy mismo.</p>
-                      <a class="animated btn btn-primary btn-brush-1" style="border-radius: 30px; border-style: none" href="producto.php" tabindex="0">
+                      <a class="animated btn btn-primary btn-brush-1" style="border-radius: 30px; border-style: none" href="https://wa.me/message/UPGCGPWWGRPSI1" tabindex="0">
                         1+ (305) 316- 8267
                       </a>
                     </div>
@@ -156,7 +156,7 @@ $productosNuevos = $productosNuevos["data"]["original"]["results"];
                   </button>
                 </li>
               </ul>
-              <a href="#" class="view-more d-none d-md-flex btn btn-primary" style="border-radius: 30px; border: none">Ver más<i class="fi-rs-angle-double-small-right"></i></a>
+              <!-- <a href="#" class="view-more d-none d-md-flex btn btn-primary" style="border-radius: 30px; border: none">Ver más<i class="fi-rs-angle-double-small-right"></i></a> -->
             </div>
             <!--End nav-tabs-->
             <div class="tab-content wow fadeIn animated" id="myTabContent">
@@ -181,18 +181,18 @@ $productosNuevos = $productosNuevos["data"]["original"]["results"];
                       </div>
                       <div class="product-content-wrap">
                         <div class="product-category">
-                          <a href="#"><?php echo $p['categoriaNombre']; ?></a>
+                          <a href="#"><?= $p['categoriaNombre']; ?></a>
                         </div>
                         <h2>
-                          <a href="producto.php?marca=<?php echo $p['marca']; ?>"><?php echo $p['nombreMarca']; ?></a>
+                          <a href="producto.php?marca=<?= $p['marca']; ?>"><?= $p['nombreMarca']; ?></a>
                         </h2>
                         <div class="subtitle"></div>
                         <div class="product-price">
                         <?php if($p['precioPromocional'] != 0){ $precio=$p['precioPromocional']; ?>
-                                    <span>U$S<?php echo $p['precioPromocional'] ;?> </span>
-                                    <span class="old-price">U$S <?php echo $p['precio'] ;?></span>
+                                    <span>U$S<?= $p['precioPromocional'] ;?> </span>
+                                    <span class="old-price">U$S <?= $p['precio'] ;?></span>
                             <?php }else{ $precio=$p['precio']?>
-                                    <span>U$S <?php echo $p['precio'] ;?></span>
+                                    <span>U$S <?= $p['precio'] ;?></span>
                             <?php } ?>
                         </div>
                         <div class="product-action-1 show">
@@ -272,24 +272,24 @@ $productosNuevos = $productosNuevos["data"]["original"]["results"];
           <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-6-columns-arrows"></div>
           <div class="carausel-6-columns" id="carausel-6-columns">
             <div class="card-1">
-              <h5><a href="tienda.php?marca=24">Accesorios</a></h5>
+              <h5><a href="tienda.php?tienda.php?grupo=7">Accesorios</a></h5>
             </div>
             <div class="card-1">
-              <h5><a href="tienda.php?marca=24">Brimstone Eyewear</a></h5>
+              <h5><a href="tienda.php?idMarca=650">Brimstone Eyewear</a></h5>
             </div>
-            <div class="card-1">
+            <!-- <div class="card-1">
               <h5><a href="tienda.php?marca=18">Dolabany Eyewear</a></h5>
-            </div>
+            </div> -->
             <div class="card-1">
               <h5>
-                <a href="tienda.php?marca=21">Freedom Colors</a>
+                <a href="tienda.php?idMarca=591">Freedom Colors</a>
               </h5>
             </div>
             <div class="card-1">
-              <h5><a href="tienda.php?marca=18">Mario Galbatti</a></h5>
+              <h5><a href="tienda.php?idMarca=161">Mario Galbatti</a></h5>
             </div>
             <div class="card-1">
-              <h5><a href="tienda.php?marca=22">Verona Love</a></h5>
+              <h5><a href="tienda.php?idMarca=476">Verona Love</a></h5>
             </div>
           </div>
         </div>
@@ -307,7 +307,7 @@ $productosNuevos = $productosNuevos["data"]["original"]["results"];
           <div class="col-lg-6 deal-co">
             <div class="background-primary-color deal wow fadeIn animated borded">
               <div class="deal-top">
-                <h2>SNOWBERRY Eyewear.</h2>
+                <h2>VERONA Eyewear.</h2>
                 <h5>Sumamos una nueva marca</h5>
               </div>
               <div class="deal-content">
@@ -319,7 +319,7 @@ $productosNuevos = $productosNuevos["data"]["original"]["results"];
                 </div>
               </div>
               <div class="deal-bottom">
-                <a href="#" class="view-more d-none d-md-flex btn bg-white w-auto" style="border-radius: 30px; border: none">Ver más<i class="fi-rs-angle-double-small-right"></i></a>
+                <a href="tienda.php?idMarca=476" class="view-more d-none d-md-flex btn bg-white w-auto" style="border-radius: 30px; border: none">Ver más<i class="fi-rs-angle-double-small-right"></i></a>
               </div>
             </div>
           </div>
@@ -386,10 +386,10 @@ $productosNuevos = $productosNuevos["data"]["original"]["results"];
         <div class="carousel-wrapper">
           <div class="carousel-slide">
             <img src="assets/imgs/brands/Captura_de_pantalla__2_-removebg-preview.png" alt="Brand 1" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
-            <img src="assets/imgs/brands/Dolabany_Eyewear_Logo_White-1.svg" alt="Brand 2" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
+            <!-- <img src="assets/imgs/brands/Dolabany_Eyewear_Logo_White-1.svg" alt="Brand 2" style="filter: grayscale(100%) brightness(0%); padding: 20px;" /> -->
             <img src="assets/imgs/brands/transparent-brimstone.png" alt="Brand 1" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
             <img src="assets/imgs/brands/transparent-freedom.png" alt="Brand 2" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
-            <img src="assets/imgs/brands/transparent-snowberry.png" alt="Brand 2" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
+            <!-- <img src="assets/imgs/brands/transparent-snowberry.png" alt="Brand 2" style="filter: grayscale(100%) brightness(0%); padding: 20px;" /> -->
           </div>
         </div>
       </div>

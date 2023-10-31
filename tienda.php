@@ -2,10 +2,10 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
-include __DIR__ . "/clases/funciones.php";
-$json_url = './assets/js/src/categorias/categorias.json';
-$json_data = file_get_contents($json_url);
-$categorias = json_decode($json_data, true);
+// include __DIR__ . "/clases/funciones.php";
+// $json_url = './assets/js/src/categorias/categorias.json';
+// $json_data = file_get_contents($json_url);
+// $categorias = json_decode($json_data, true);
 ?>
 
 <!DOCTYPE html>
@@ -155,7 +155,15 @@ input {
                   <div class="price_slider_amount">
 
                     <div class="label-input d-flex">
-                      <input type="text" id="marca" name="marca" class="border rounded px-3" style="margin-right: 10px" placeholder="" />
+
+                      <select name="marca" class="form-select border rounded px-3">
+                      <?php foreach ($categoriasProductos['data'] as $cp){ ?>
+                        <option value="<?= $cp['id']; ?>" value="<?= $c['id']; ?>" <?php if ($cp['id'] == $marcaSeleccionada) echo 'selected'; ?>><?= $cp['NombreMarca']; ?></option>
+                        <?php } ?>
+                      </select>
+
+
+                      <!-- <input type="text" id="marca" name="marca" class="border rounded px-3" style="margin-right: 10px" placeholder="" /> -->
 
                     </div>
                   </div>
