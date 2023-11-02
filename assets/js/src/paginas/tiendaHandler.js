@@ -68,7 +68,7 @@ function obtenerProductosPaginados(pagina, filtro) {
             const paginador = original;
 
             renderBodyHtml(producto, token);
-            renderPaginationHtml(paginador);
+            renderPaginationHtml(paginador, token);
         })
         .catch((error) => {
             console.log('Error:', error);
@@ -226,7 +226,7 @@ function renderBodyHtml(productos, token) {
     }
 }
 
-function renderPaginationHtml(response) {
+function renderPaginationHtml(response, token) {
 
 
     const resultadosPorPagina = 16;
@@ -241,8 +241,8 @@ function renderPaginationHtml(response) {
     if (urlParams.has('pagina')) {
         paginaActual = parseInt(urlParams.get('pagina'));
     }
-    if (urlParams.has('marca')) {
-        marca = urlParams.get('marca');
+    if (urlParams.has('idMarca')) {
+        marca = urlParams.get('idMarca');
     }
 
     if (urlParams.has('grupo')) {
@@ -303,15 +303,17 @@ function renderPaginationHtml(response) {
         </li>`;
     }
 
-    html += `<li class="page-item">
+    html += html = `<li class="page-item">
     <a id="next-page" class="page-link" href="#"><i class="fi-rs-angle-double-small-right"></i></a>
 </li>
+</ul>`;
 
-    </ul>
-    <a id="custom-button" href="${api}/web/generar-productos-csv?idmarca=${marca}" class="btn btn-sm btn-default" style="margin-right: 10px;">Descargar excel</a>
+    if (token) {
+        html += `<a id="custom-button" href="${api}/web/generar-productos-csv?idmarca=${marca}" class="btn btn-sm btn-default" style="margin-right: 10px;">Descargar excel</a>`;
+    }
 
-    </div>
-    </nav>`;
+    html += `</div>
+</nav>`;
 
     const paginationContainer = document.getElementById('pagination-area');
     if (paginationContainer) {
