@@ -95,7 +95,6 @@ function renderBodyHtml(productos, token) {
         $("#product-list").empty();
 
         productos.forEach((producto) => {
-            // Verifica si producto.precioLista es igual a producto.precio
             const hideOldPrice = producto.precioLista === producto.precio;
 
             html += `

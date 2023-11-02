@@ -23,7 +23,7 @@
                     <!-- Subscribe Form -->
                     <form class="form-subcriber d-flex wow fadeIn animated">
                         <input type="email" class="form-control bg-white font-small input-newsletter" placeholder="Tu correo electronico" />
-                        <button class="btn bg-dark text-white btn-newsletter" type="submit">
+                        <button class="btn bg-dark text-white btn-newsletter" type="button">
                             Suscribirme
                         </button>
                     </form>

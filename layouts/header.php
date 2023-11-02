@@ -2,7 +2,6 @@
 
 require_once __DIR__ . '/../clases/funciones.php';
 
-$nombreCliente = "";
 if (isset($usuarioLogueado) && $usuarioLogueado && isset($_COOKIE['cliente'])) {
   $nombreCliente = json_decode($_COOKIE['cliente'])->nombre;
 }
