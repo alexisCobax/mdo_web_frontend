@@ -34,9 +34,9 @@ if (isset($_GET['buscador'])) {
 $api = new ApiHelper;
 
 if ($_GET['grupo']) {
-    $producto = $api->get($url . '/api/web/producto?cantidad=' . $resultadosPorPagina . '&pagina=' . $paginaActual . '&grupo=' . $idGrupo. '&buscador=' .$buscador);
+    $producto = $api->get($url . '/api/web/producto?cantidad=' . $resultadosPorPagina . '&pagina=' . $paginaActual . '&grupo=' . $idGrupo . '&buscador=' . $buscador);
 } else {
-    $producto = $api->get($url . '/api/web/producto?cantidad=' . $resultadosPorPagina . '&pagina=' . $paginaActual . '&idmarca=' . $idMarca. '&buscador=' .$buscador);
+    $producto = $api->get($url . '/api/web/producto?cantidad=' . $resultadosPorPagina . '&pagina=' . $paginaActual . '&idmarca=' . $idMarca . '&buscador=' . $buscador);
 }
 
 
@@ -69,6 +69,9 @@ if ($paginatedResults) {
                         </h4>
                         <div class="product-category">
                             <a href="producto.php?id=<?= $resultado['id']; ?>"><?= $resultado['nombreMarca']; ?></a>
+                            <div class="product-category">
+                                <div><?= $resultado['codigo']; ?></div>
+                            </div>
                         </div>
                         <?= isset($_COOKIE['token'])
                             ? '<div class="product-price mt-1">

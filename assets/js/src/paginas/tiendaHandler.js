@@ -122,7 +122,7 @@ function renderBodyHtml(productos, token) {
                                     <div class="product-category">
                                         <a href="producto.php?id=${producto.id}">${decodeURIComponent(escape(producto.nombreMarca))}</a>
                                         <div class="product-category">
-                                        <div>${(typeof producto.UPCreal !== "undefined") ? producto.UPCreal : ""}</div>
+                                        <div>${(typeof producto.codigo !== "undefined") ? producto.codigo : ""}</div>
                                     </div>
                                     </div>
                                 </div>
