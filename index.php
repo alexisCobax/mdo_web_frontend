@@ -277,9 +277,9 @@ $productosNuevos = $productosNuevos["data"]["original"]["results"];
             <div class="card-1">
               <h5><a href="tienda.php?idMarca=650">Brimstone Eyewear</a></h5>
             </div>
-            <!-- <div class="card-1">
-              <h5><a href="tienda.php?marca=18">Dolabany Eyewear</a></h5>
-            </div> -->
+            <div class="card-1">
+              <h5><a href="tienda.php??idMarca=658">Snowberry Eyewear</a></h5>
+            </div>
             <div class="card-1">
               <h5>
                 <a href="tienda.php?idMarca=591">Freedom Colors</a>
@@ -386,7 +386,7 @@ $productosNuevos = $productosNuevos["data"]["original"]["results"];
         <div class="carousel-wrapper">
           <div class="carousel-slide">
             <img src="assets/imgs/brands/Captura_de_pantalla__2_-removebg-preview.png" alt="Brand 1" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
-            <!-- <img src="assets/imgs/brands/Dolabany_Eyewear_Logo_White-1.svg" alt="Brand 2" style="filter: grayscale(100%) brightness(0%); padding: 20px;" /> -->
+            <img src="assets/imgs/brands/snowberry_logo.png" alt="Brand 2" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
             <img src="assets/imgs/brands/transparent-brimstone.png" alt="Brand 1" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
             <img src="assets/imgs/brands/transparent-freedom.png" alt="Brand 2" style="filter: grayscale(100%) brightness(0%); padding: 20px;" />
             <!-- <img src="assets/imgs/brands/transparent-snowberry.png" alt="Brand 2" style="filter: grayscale(100%) brightness(0%); padding: 20px;" /> -->
