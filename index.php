@@ -266,14 +266,14 @@ $productosNuevos = $productosNuevos["data"]["original"]["results"];
     <section class="popular-categories section-padding mt-15">
       <div class="container wow fadeIn animated">
         <h3 class="section-title mb-20">
-          <span>Categorías</span> más vistas
+          <span>Nuestras lineas</span> exclusivas
         </h3>
         <div class="carausel-6-columns-cover position-relative">
           <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-6-columns-arrows"></div>
           <div class="carausel-6-columns" id="carausel-6-columns">
-            <div class="card-1">
+            <!-- <div class="card-1">
               <h5><a href="tienda.php?tienda.php?grupo=7">Accesorios</a></h5>
-            </div>
+            </div> -->
             <div class="card-1">
               <h5><a href="tienda.php?idMarca=650">Brimstone Eyewear</a></h5>
             </div>
@@ -285,9 +285,9 @@ $productosNuevos = $productosNuevos["data"]["original"]["results"];
                 <a href="tienda.php?idMarca=591">Freedom Colors</a>
               </h5>
             </div>
-            <div class="card-1">
+            <!-- <div class="card-1">
               <h5><a href="tienda.php?idMarca=161">Mario Galbatti</a></h5>
-            </div>
+            </div> -->
             <div class="card-1">
               <h5><a href="tienda.php?idMarca=476">Verona Love</a></h5>
             </div>

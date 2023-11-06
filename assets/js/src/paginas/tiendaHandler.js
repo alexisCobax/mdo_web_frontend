@@ -131,16 +131,17 @@ function renderBodyHtml(productos, token) {
                                 ${token ?
                     `<div class="mt-2 product-cart">
             <div class="product-price mt-1">
-                <span class="fs-5">$ ${producto.precio} </span>
+                <span class="fs-5">$ ${producto.precio} </span><strong><a aria-label="Agregar al carrito" class="action-btn hover-up bg-white d-md-none" onclick="agregarProducto(43261,27.99)"><i class="fi-rs-shopping-bag-add" style="color: #ba417c; font-size:30px;"></i></a></strong>
+
                 ${!hideOldPrice ? `<span class="old-price" style="text-decoration: line-through">${producto.precioLista}</span>` : ''}
             </div>
-            <div class="number">
+            <div class="number d-none d-sm-block">
                 <span class="minus" onclick="Descontar(this);"><em>-</em></span>
                 <input size="2" type="text" autocomplete="off" class="cart_quantity_input" value="0" name="cantidad">
                 <span class="plus" onclick="Aumentar(this);"><em>+</em></span>
             </div>
-            <button class="btn btn-sm btn-default" onclick="agregarProducto(${producto.id},${producto.precioPromocional})"><em>+</em> Agregar al carro</button>
-        </div>`
+            <button class="btn btn-sm btn-default d-none d-sm-block" onclick="agregarProducto(${producto.id},${producto.precioPromocional})"><em>+</em> Agregar al carro</button>          
+            </div>`
                     :
                     `<div class="mt-2 product-cart">
             <button class="btn btn-sm btn-default" onclick="agregarProducto(${producto.id},${producto.precioPromocional})"><em>+</em> Agregar al carro</button>
