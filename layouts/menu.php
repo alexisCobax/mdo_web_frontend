@@ -120,7 +120,7 @@ $categoriasProductos['data'][] = $nuevoElemento;
             <div class="header-action-icon-2" style="margin-right: 10px;">
               <a class="mini-cart-icon" href="shop-cart.php">
                 <i class="fa-solid fa-cart-shopping" style="color:black !important;"></i>
-                <span class="pro-count blue" id="cart-count">0</span>
+                <span class="pro-count blue" id="cart-count2">0</span>
               </a>
               <div class="cart-dropdown-wrap cart-dropdown-hm2">
                 <div class="shopping-cart-footer">

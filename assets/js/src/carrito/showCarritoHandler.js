@@ -78,11 +78,14 @@ function obtenerCarrito() {
                 .then(response => response.json())
                 .then(data => {
                     const cartCountElement = document.getElementById('cart-count');
+                    const cartCountElement2 = document.getElementById('cart-count2');
 
                     if (data.data['detalles'].length) {
                         cartCountElement.textContent = data.data['detalles'].length;
+                        cartCountElement2.textContent = data.data['detalles'].length;
                     } else {
                         cartCountElement.textContent = 0;
+                        cartCountElement2.textContent = 0;
                     }
 
                     if (data.data['carrito']) {
