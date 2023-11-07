@@ -275,21 +275,21 @@ $productosNuevos = $productosNuevos["data"]["original"]["results"];
               <h5><a href="tienda.php?tienda.php?grupo=7">Accesorios</a></h5>
             </div> -->
             <div class="card-1">
-              <h5><a href="tienda.php?idMarca=650">Brimstone Eyewear</a></h5>
+              <h5><a href="tienda.php?idMarca=650">Brimstone Eyewear&reg;</a></h5>
             </div>
             <div class="card-1">
-              <h5><a href="tienda.php??idMarca=658">Snowberry Eyewear</a></h5>
+              <h5><a href="tienda.php??idMarca=658">Snowberry Eyewear&reg;</a></h5>
             </div>
             <div class="card-1">
               <h5>
-                <a href="tienda.php?idMarca=591">Freedom Colors</a>
+                <a href="tienda.php?idMarca=591">Freedom Colors&reg;</a>
               </h5>
             </div>
             <!-- <div class="card-1">
               <h5><a href="tienda.php?idMarca=161">Mario Galbatti</a></h5>
             </div> -->
             <div class="card-1">
-              <h5><a href="tienda.php?idMarca=476">Verona Love</a></h5>
+              <h5><a href="tienda.php?idMarca=476">Verona Love&reg;</a></h5>
             </div>
           </div>
         </div>
