@@ -11,7 +11,7 @@ use app\helpers\ApiHelper;
 
 $api = new ApiHelper;
 
-$productosDestacados = $api->get($url.'/api/web/producto?destacado=1');
+$productosDestacados = $api->get($url.'/api/web/producto?destacado=1&cantidad=3');
 $productosDestacados = $productosDestacados["data"]["original"]["results"];
 
 $productosNuevos = $api->get($url.'/api/web/producto?estado=nuevo');
